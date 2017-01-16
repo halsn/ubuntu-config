@@ -35,6 +35,7 @@ echo "deb [ arch=amd64,arm64 ] http://repo.mongodb.org/apt/ubuntu xenial/mongodb
 sudo apt-get update
 sudo apt-get install -y mongodb-org
 sudo service mongod start
+echo "sudo service mongod start" | sudo tee -a /etc/rc.local
 
 #Robomongo
 proxychains wget https://download.robomongo.org/0.9.0/linux/robomongo-0.9.0-linux-x86_64-0786489.tar.gz
@@ -46,3 +47,6 @@ sudo ln -s $ROBODIR/bin/robomongo .
 #配置文件
 git clone https://github.com/halsn/ubuntu-config && cd ubuntu-config
 cp .* $HOME
+
+#NVim
+curl https://raw.githubusercontent.com/halsn/neovim-config/master/setup.sh | bash
