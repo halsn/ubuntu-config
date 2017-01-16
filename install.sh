@@ -49,4 +49,4 @@ git clone https://github.com/halsn/ubuntu-config && cd ubuntu-config
 cp .* $HOME
 
 #NVim
-curl https://raw.githubusercontent.com/halsn/neovim-config/master/setup.sh | bash
+curl https://raw.githubusercontent.com/halsn/neovim-config/master/install.sh | bash
