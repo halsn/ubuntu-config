@@ -6,11 +6,12 @@ sudo sed -i 's/security.ubuntu.com/mirrors.163.com/g' /etc/apt/sources.list
 sudo apt-get update
 
 #必备软件
-sudo apt-get install -y git ibus-rime ppa-purge proxychains tree time
+sudo apt-get install -y git ibus-rime ppa-purge proxychains tree time curl wget
 
 #Lantern
 wget https://raw.githubusercontent.com/getlantern/lantern-binaries/master/lantern-installer-beta-64-bit.deb
 sudo dpkg -i lantern-installer-beta-64-bit.deb
+sudo apt-get install -f
 
 #设置proxychains端口
 echo "----------打开Lantern查看端口------------"
@@ -49,4 +50,4 @@ git clone https://github.com/halsn/ubuntu-config && cd ubuntu-config
 cp .* $HOME
 
 #NVim
-curl https://raw.githubusercontent.com/halsn/neovim-config/master/install.sh | bash
+curl https://raw.githubusercontent.com/halsn/neovim-config/master/install.sh | sh
