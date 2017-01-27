@@ -9,8 +9,8 @@ sudo apt-get update
 sudo apt-get install -y git ibus-rime ppa-purge proxychains tree time curl wget
 
 #Lantern
-wget https://raw.githubusercontent.com/getlantern/lantern-binaries/master/lantern-installer-beta-64-bit.deb
-sudo dpkg -i lantern-installer-beta-64-bit.deb
+wget https://raw.githubusercontent.com/getlantern/lantern-binaries/master/lantern-installer-beta-64-bit.deb -O lantern.deb
+sudo dpkg -i lantern.deb
 sudo apt-get install -f
 
 #设置proxychains端口
@@ -39,8 +39,8 @@ sudo service mongod start
 echo "sudo service mongod start" | sudo tee -a /etc/rc.local
 
 #Robomongo
-proxychains wget https://download.robomongo.org/0.9.0/linux/robomongo-0.9.0-linux-x86_64-0786489.tar.gz
-tar -zxf robomongo-0.9.0-linux-x86_64-0786489.tar.gz && cd robomongo-0.9.0-linux-x86_64-0786489
+proxychains wget https://download.robomongo.org/0.9.0/linux/robomongo-0.9.0-linux-x86_64-0786489.tar.gz -O robomonto.tar.gz
+tar -zxf robomongo.tar.gz && cd robomongo
 ROBODIR=$(pwd)
 cd /usr/local/bin/
 sudo ln -s $ROBODIR/bin/robomongo .
