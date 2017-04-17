@@ -119,3 +119,8 @@ fi
 alias cl="clear"
 alias nim="nvim"
 alias rm="rm -i"
+
+alias proxy="http_proxy=http://127.0.0.1:42005"
+
+# auto cd
+shopt -s autocd
