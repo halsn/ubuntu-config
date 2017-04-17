@@ -6,7 +6,7 @@ sudo sed -i 's/security.ubuntu.com/mirrors.163.com/g' /etc/apt/sources.list
 sudo apt-get update
 
 #必备软件
-sudo apt-get install -y git ibus-rime ppa-purge apt-file tree time curl wget
+sudo apt-get install -y git ibus-rime ppa-purge tree time curl wget
 
 #Lantern
 wget https://raw.githubusercontent.com/getlantern/lantern-binaries/master/lantern-installer-beta-64-bit.deb -O lantern.deb
@@ -28,12 +28,20 @@ sudo service mongod start
 echo "sudo service mongod start" | sudo tee -a /etc/rc.local
 
 #配置文件
-git clone https://github.com/halsn/ubuntu-config && cd ubuntu-config
+cd $HOME
+git clone git@github.com:halsn/ubuntu-config && cd ubuntu-config
 cp .* $HOME
-export http_proxy=http://127.0.0.1:42005
+
+# Node
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
+source $HOME/.nvm/nvm.sh
+source $HOME/.profile
+source $HOME/.bashrc
+nvm install stable
+npm install js-beautify eslint_d babel-eslint eslint-config-airbnb eslint-plugin-import eslint-plugin-react eslint-plugin-jsx-a11y htmlhint eslint jsonlint csslint -g
 
 #NVim
-curl https://raw.githubusercontent.com/halsn/neovim-config/master/install.sh | sh
+curl -o- https://raw.githubusercontent.com/halsn/neovim-config/master/install.sh | sh
 
 #Robomongo
 proxy wget https://download.robomongo.org/0.9.0/linux/robomongo-0.9.0-linux-x86_64-0786489.tar.gz -O robomonto.tar.gz

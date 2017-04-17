@@ -119,8 +119,8 @@ fi
 alias cl="clear"
 alias nim="nvim"
 alias rm="rm -i"
-
-alias proxy="http_proxy=http://127.0.0.1:42005"
-
-# auto cd
+# autocd
 shopt -s autocd
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
