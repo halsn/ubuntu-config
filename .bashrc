@@ -120,8 +120,12 @@ alias cl="clear"
 alias nim="nvim"
 alias rm="rm -i"
 alias proxy="http_proxy=http://127.0.0.1:42005"
+# google translate
+alias trs="trans -t zh+en "
 # autocd
 shopt -s autocd
 
 export NVM_DIR="$HOME/.nvm"
+# 添加自定义文件夹至PATH
+export PATH=$PATH:$HOME/APP
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
