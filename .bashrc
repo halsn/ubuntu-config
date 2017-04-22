@@ -122,9 +122,12 @@ alias rm="rm -i"
 alias proxy="http_proxy=http://127.0.0.1:42005"
 # google translate
 alias trs="trans -t zh+en "
-alias syns="wordnet -syns{n,v,a,r} "
 # autocd
 shopt -s autocd
+
+syns() {
+  wordnet word -syns{n,v,a,r}
+}
 
 export NVM_DIR="$HOME/.nvm"
 # 添加自定义文件夹至PATH
