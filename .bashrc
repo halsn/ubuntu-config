@@ -126,7 +126,7 @@ alias trs="trans -t zh+en "
 shopt -s autocd
 
 syns() {
-  wordnet word -syns{n,v,a,r}
+  wordnet $1 -syns{n,v,a,r}
 }
 
 export NVM_DIR="$HOME/.nvm"
