@@ -124,7 +124,7 @@ alias proxy="http_proxy=http://127.0.0.1:42005"
 alias trs="trans -t zh+en "
 # autocd
 shopt -s autocd
-
+# synonyms
 syns() {
   wordnet $1 -syns{n,v,a,r}
 }
