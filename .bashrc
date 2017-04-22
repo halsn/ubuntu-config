@@ -122,6 +122,7 @@ alias rm="rm -i"
 alias proxy="http_proxy=http://127.0.0.1:42005"
 # google translate
 alias trs="trans -t zh+en "
+alias syns="wordnet -syns{n,v,a,r} "
 # autocd
 shopt -s autocd
 
