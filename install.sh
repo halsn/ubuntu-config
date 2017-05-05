@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-#换163源
-sudo sed -i 's/archive.ubuntu.com/mirrors.163.com/g' /etc/apt/sources.list
-sudo sed -i 's/security.ubuntu.com/mirrors.163.com/g' /etc/apt/sources.list
 sudo apt-get update
 
 #必备软件
