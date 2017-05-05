@@ -130,10 +130,10 @@ syns() {
 }
 
 foo() {
-  echo \'`echo {\"name\": \"$1\"}`\' \'`echo {\"name\": \"$2\"}`\'
+  echo $1 \'`echo {\"name\": \"$2\"}`\'
 }
 addgitrepo() {
-  curl -u $1 https://api.github.com/user/repos -d \'`echo {\"name\": \"$2\"}`\'
+  echo 'curl -u $1 https://api.github.com/user/repos -d \'`echo {\"name\": \"$2\"}`\' '
 }
 
 export NVM_DIR="$HOME/.nvm"
