@@ -135,5 +135,5 @@ addgitrepo() {
 
 export NVM_DIR="$HOME/.nvm"
 # 添加自定义文件夹至PATH
-export PATH=$PATH:$HOME/APP
+export PATH=$PATH:$HOME/App
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
