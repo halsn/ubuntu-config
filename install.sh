@@ -27,7 +27,7 @@ echo "sudo service mongod start" | sudo tee -a /etc/rc.local
 #配置文件
 cd $HOME
 git clone git@github.com:halsn/ubuntu-config && cd ubuntu-config
-cp .bashrc $HOME
+cp -a .bashrc $HOME
 cp -a ./App $HOME
 sudo cp -a ./config/rc.local /etc/
 
