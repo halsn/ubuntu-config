@@ -133,7 +133,7 @@ foo() {
   echo $1 \'`echo {\"name\": \"$2\"}`\'
 }
 addgitrepo() {
-  echo "curl -u $1 https://api.github.com/user/repos -d '`echo {"name": "$2"}`'"
+  echo "curl -u $1 https://api.github.com/user/repos -d '`echo {\"name\": "$2"}`'"
 }
 
 export NVM_DIR="$HOME/.nvm"
