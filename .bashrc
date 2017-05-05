@@ -132,7 +132,7 @@ syns() {
 foo() {
   echo \'`echo {\"name\": \"$1\"}`\'
 }
-addgithubrepo() {
+addgitrepo() {
   curl -u $1 https://api.github.com/user/repos -d \'`echo {\"name\": \"$2\"}`\'
 }
 
