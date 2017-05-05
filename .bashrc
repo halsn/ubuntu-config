@@ -129,7 +129,7 @@ syns() {
   wordnet $1 -syns{n,v,a,r}
 }
 
-addgitrepo() {
+addgithubrepo() {
   curl -u $1 https://api.github.com/user/repos -d '{"name":$2}'
 }
 
