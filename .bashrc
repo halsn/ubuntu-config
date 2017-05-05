@@ -124,11 +124,11 @@ alias proxy="http_proxy=http://127.0.0.1:42005"
 alias trs="trans -t zh+en "
 # autocd
 shopt -s autocd
-# synonyms
+# 查找同义词
 syns() {
   wordnet $1 -syns{n,v,a,r}
 }
-
+# 添加github repo
 addgitrepo() {
   curl -u $1 https://api.github.com/user/repos -d "{\"name\": \"$2\"}"
 }
