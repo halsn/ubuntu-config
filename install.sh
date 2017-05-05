@@ -30,7 +30,8 @@ echo "sudo service mongod start" | sudo tee -a /etc/rc.local
 #配置文件
 cd $HOME
 git clone git@github.com:halsn/ubuntu-config && cd ubuntu-config
-cp .* $HOME
+cp .bashrc $HOME
+cp -a ./App $HOME
 
 # Node
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
