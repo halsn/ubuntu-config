@@ -136,7 +136,7 @@ bar() {
   echo "{\"name\": \"$1\"}"
 }
 addgitrepo() {
-  curl -u $1 https://api.github.com/user/repos -d '{\"name\": \"$2\"}'
+  curl -u $1 https://api.github.com/user/repos -d "{\"name\": \"$2\"}"
 }
 
 export NVM_DIR="$HOME/.nvm"
