@@ -32,6 +32,7 @@ cd $HOME
 git clone git@github.com:halsn/ubuntu-config && cd ubuntu-config
 cp .bashrc $HOME
 cp -a ./App $HOME
+sudo cp -a ./config/rc.local /etc/
 
 # Node
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
