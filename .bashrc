@@ -129,6 +129,10 @@ syns() {
   wordnet $1 -syns{n,v,a,r}
 }
 
+addgitrepo() {
+  curl -u $1 https://api.github.com/$1/repos -d '{"name":$2}'
+}
+
 export NVM_DIR="$HOME/.nvm"
 # 添加自定义文件夹至PATH
 export PATH=$PATH:$HOME/APP
