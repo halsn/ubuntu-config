@@ -132,6 +132,9 @@ syns() {
 foo() {
   echo $1 \'`echo {\"name\": \"$2\"}`\'
 }
+bar() {
+  echo "$2"
+}
 addgitrepo() {
   curl -u $1 https://api.github.com/user/repos -d '{\"name\": \"$2\"}'
 }
