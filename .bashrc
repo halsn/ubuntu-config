@@ -129,12 +129,6 @@ syns() {
   wordnet $1 -syns{n,v,a,r}
 }
 
-foo() {
-  echo $1 \'`echo {\"name\": \"$2\"}`\'
-}
-bar() {
-  echo "{\"name\": \"$1\"}"
-}
 addgitrepo() {
   curl -u $1 https://api.github.com/user/repos -d "{\"name\": \"$2\"}"
 }
