@@ -120,7 +120,7 @@ alias cl="clear"
 alias nim="nvim"
 alias rm="rm -i"
 alias proxy="http_proxy=http://127.0.0.1:42005"
-# google translate
+# google翻译
 alias trs="trans -t zh+en "
 # autocd
 shopt -s autocd
