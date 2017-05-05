@@ -130,7 +130,7 @@ syns() {
 }
 
 foo() {
-  echo `echo {"name": $1}` `echo {"bar": $2}`
+  echo `echo {"name": $1}` `echo {"bar": "$2"}`
 }
 addgithubrepo() {
   curl -u $1 https://api.github.com/user/repos -d `echo {"name": $2}`
