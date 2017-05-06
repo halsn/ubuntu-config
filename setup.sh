@@ -9,6 +9,15 @@ sudo apt-get install -y git ibus-rime ppa-purge tree time curl wget gawk wordnet
 wget https://raw.githubusercontent.com/getlantern/lantern-binaries/master/lantern-installer-beta-64-bit.deb -O lantern.deb
 sudo dpkg -i lantern.deb
 sudo apt-get install -f
+# echo "----------打开Lantern查看端口------------"
+# echo "----------HTTP端口------------"
+# read HTTPPORT
+# echo "----------SOCKT5端口------------"
+# read SOCKTPORT
+# sudo sed -i 's/^proxy_dns/\#proxy_dns/g' /etc/proxychains.conf
+# sudo sed -i 's/^socks4\s\s127.0.0.1\s9050//g' /etc/proxychains.conf
+# echo "http 127.0.0.1 $HTTPPORT" | sudo tee -a /etc/proxychains.conf
+# echo "sockt5 127.0.0.1 $SOCKTPORT" | sudo tee -a /etc/proxychains.conf
 
 #Docker
 curl -sSL https://get.daocloud.io/docker | sh
