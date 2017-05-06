@@ -3,7 +3,7 @@
 sudo apt-get update
 
 #必备软件
-sudo apt-get install -y git ibus-rime ppa-purge tree time curl wget
+sudo apt-get install -y git ibus-rime ppa-purge tree time curl wget gawk wordnet
 
 #Lantern
 wget https://raw.githubusercontent.com/getlantern/lantern-binaries/master/lantern-installer-beta-64-bit.deb -O lantern.deb
