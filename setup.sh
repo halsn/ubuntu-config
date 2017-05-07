@@ -100,13 +100,13 @@ config_robomongo() {
   echo "------------------finished-----------------"
 }
 
-install_first
-config_ssh
-config_git
-config_ubuntu
-config_lantern
-config_docker
-config_mongo
-config_node
-config_nvim
-# config_robomongo
+# install_first
+# config_ssh
+# config_git
+# config_ubuntu
+# config_lantern
+# config_docker
+# config_mongo
+# config_node
+# config_nvim
+config_robomongo
