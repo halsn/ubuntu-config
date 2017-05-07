@@ -6,7 +6,6 @@ sudo apt-get update
 install_first() {
   sudo apt-get install -y git ibus-rime ppa-purge tree time curl wget gawk wordnet entr inotify-tools
 }
-install_first
 
 config_ssh() {
   ssh-keygen -t rsa -b 4096 -C "xuhalsn@gmail.com"
@@ -14,7 +13,6 @@ config_ssh() {
   # https://askubuntu.com/questions/762541/ubuntu-16-04-ssh-sign-and-send-pubkey-signing-failed-agent-refused-operation
   ssh-add
 }
-config_ssh
 
 config_git() {
   echo "---------------git---------------"
@@ -25,7 +23,6 @@ config_git() {
   git config --global user.name "halsn"
   echo "------------finished-------------"
 }
-config_git
 
 config_ubuntu() {
   echo "--------------clone ubuntu-config---------------"
@@ -36,7 +33,6 @@ config_ubuntu() {
   sudo cp -a ./config/rc.local /etc/
   echo "-------------------finished---------------------"
 }
-config_ubuntu
 
 #Lantern
 config_lantern() {
@@ -50,7 +46,6 @@ config_lantern() {
   echo "alias proxy=\"http_proxy=http://127.0.0.1:$HTTPPORT\"" | tee -a $HOME/.bashrc
   echo "--------------finished-------------------"
 }
-config_lantern
 
 #Docker
 config_docker() {
@@ -61,7 +56,6 @@ config_docker() {
   sudo systemctl restart docker.service
   echo "------------finished---------------"
 }
-config_docker
 
 #MongoDB
 config_mongo() {
@@ -74,7 +68,6 @@ config_mongo() {
   echo "sudo service mongod start" | sudo tee -a /etc/rc.local
   echo "--------------finished-----------------"
 }
-config_mongo
 
 # Node
 config_node() {
@@ -87,7 +80,6 @@ config_node() {
   npm install js-beautify eslint_d babel-eslint eslint-config-airbnb eslint-plugin-import eslint-plugin-react eslint-plugin-jsx-a11y htmlhint eslint jsonlint csslint -g
   echo "---------------finished----------------"
 }
-config_node
 
 #NVim
 config_nvim() {
@@ -95,7 +87,6 @@ config_nvim() {
   curl -o- https://raw.githubusercontent.com/halsn/neovim-config/master/install.sh | sh
   echo "---------------finished-----------------"
 }
-config_nvim
 
 # Robomongo
 config_robomongo() {
@@ -108,4 +99,14 @@ config_robomongo() {
   sudo ln -s $ROBODIR/bin/robomongo .
   echo "------------------finished-----------------"
 }
+
+install_first
+config_ssh
+config_git
+config_ubuntu
+config_lantern
+config_docker
+config_mongo
+config_node
+config_nvim
 # config_robomongo
