@@ -6,6 +6,7 @@ sudo apt-get update
 install_first() {
   sudo apt-get install -y git ibus-rime ppa-purge tree time curl wget gawk wordnet entr inotify-tools
 }
+install_first
 
 config_git() {
   echo "---------------git---------------"
@@ -13,20 +14,25 @@ config_git() {
   curl -u "halsn" \
     --data "{\"title\":\"VM_`date +%Y%m%d%H%M%S`\",\"key\":\"`cat ~/.ssh/id_rsa.pub`\"}" \
     https://api.github.com/user/keys
-  git config --global user.email "xuhalsn@gmail"
+  git config --global user.email "xuhalsn@gmail.com"
   git config --global user.name "halsn"
+  # 没有这个命令会出现无法clone的问题
+  # https://askubuntu.com/questions/762541/ubuntu-16-04-ssh-sign-and-send-pubkey-signing-failed-agent-refused-operation
+  ssh-add
   echo "------------finished-------------"
 }
+config_git
 
 config_ubuntu() {
   echo "--------------clone ubuntu-config---------------"
   cd $HOME
   git clone git@github.com:halsn/ubuntu-config && cd ubuntu-config
-  cp -a ./dotfiles/* $HOME
+  cp -a ./dotfiles/. $HOME
   cp -a ./App $HOME
   sudo cp -a ./config/rc.local /etc/
   echo "-------------------finished---------------------"
 }
+config_ubuntu
 
 #Lantern
 config_lantern() {
@@ -35,16 +41,12 @@ config_lantern() {
   sudo dpkg -i lantern.deb
   sudo apt-get install -f
   echo "----------打开Lantern查看端口------------"
-  echo "----------HTTP端口------------"
+  echo "---------------HTTP端口------------------"
   read HTTPPORT
-  echo "-------------finished---------------"
-}
-
-config_bash() {
-  echo "---------------bash---------------"
   echo "alias proxy=\"http_proxy=http://127.0.0.1:$HTTPPORT\"" | tee -a $HOME/.bashrc
-  echo "-------------finished-------------"
+  echo "--------------finished-------------------"
 }
+config_lantern
 
 #Docker
 config_docker() {
@@ -55,6 +57,7 @@ config_docker() {
   sudo systemctl restart docker.service
   echo "------------finished---------------"
 }
+config_docker
 
 #MongoDB
 config_mongo() {
@@ -67,6 +70,7 @@ config_mongo() {
   echo "sudo service mongod start" | sudo tee -a /etc/rc.local
   echo "--------------finished-----------------"
 }
+config_mongo
 
 # Node
 config_node() {
@@ -79,6 +83,7 @@ config_node() {
   npm install js-beautify eslint_d babel-eslint eslint-config-airbnb eslint-plugin-import eslint-plugin-react eslint-plugin-jsx-a11y htmlhint eslint jsonlint csslint -g
   echo "---------------finished----------------"
 }
+config_node
 
 #NVim
 config_nvim() {
@@ -86,14 +91,17 @@ config_nvim() {
   curl -o- https://raw.githubusercontent.com/halsn/neovim-config/master/install.sh | sh
   echo "---------------finished-----------------"
 }
+config_nvim
 
-#Robomongo
+# Robomongo
 config_robomongo() {
   echo "------------------robomongo----------------"
-  proxy wget https://download.robomongo.org/0.9.0/linux/robomongo-0.9.0-linux-x86_64-0786489.tar.gz -O robomonto.tar.gz
+  wget https://download.robomongo.org/0.9.0/linux/robomongo-0.9.0-linux-x86_64-0786489.tar.gz -O robomongo.tar.gz
   tar -zxf robomongo.tar.gz && cd robomongo
-  ROBODIR=$(pwd)
+  ROBODIR=$HOME/App/
+  echo $ROBODIR
   cd /usr/local/bin/
   sudo ln -s $ROBODIR/bin/robomongo .
   echo "------------------finished-----------------"
 }
+# config_robomongo
