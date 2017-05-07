@@ -13,7 +13,7 @@
 
 sudo service mongod start
 su -c "/home/halsn/App/gitwatch -r origin -b master /home/halsn/ubuntu-config" -l halsn &
-su -c "/home/halsn/App/gitwatch -r origin -b master /home/halsn/.config/" -l halsn &
+su -c "/home/halsn/App/gitwatch -r origin -b master /home/halsn/.config/nvim" -l halsn &
 su -c "ls /etc/rc.local | entr -p cp /_ /home/halsn/ubuntu-config/config/" -l halsn &
 su -c "ls /home/halsn/.bashrc | entr -p cp /_ /home/halsn/ubuntu-config/dotfiles/" -l halsn &
 su -c "ls /home/halsn/.eslintrc | entr -p cp /_ /home/halsn/ubuntu-config/dotfiles/" -l halsn &
