@@ -10,5 +10,11 @@
 # bits.
 #
 # By default this script does nothing.
+
 sudo service mongod start
-su -c "/bin/ls /home/halsn/.bashrc | entr -p cp /_ /home/halsn/ubuntu-config/" -l halsn &
+su -c "/home/halsn/App/gitwatch -r origin -b master /home/halsn/ubuntu-config" -l halsn &
+su -c "ls /etc/rc.local | entr -p cp /_ /home/halsn/ubuntu-config/config" -l halsn &
+su -c "ls /home/halsn/.bashrc | entr -p cp /_ /home/halsn/ubuntu-config/dotfiles" -l halsn &
+su -c "ls /home/halsn/.eslintrc | entr -p cp /_ /home/halsn/ubuntu-config/dotfiles" -l halsn &
+
+exit 0
