@@ -11,8 +11,4 @@
 #
 # By default this script does nothing.
 sudo service mongod start
-su -c "/usr/bin/gitwatch -m 'auto commit' /home/halsn/.config/nvim" -l halsn &
-su -c "/usr/bin/gitwatch -r origin -b master -m 'auto commit' /home/halsn/Documents/ubuntu-config" -l halsn &
-su -c "/bin/ls /home/halsn/.bashrc | entr -p cp /_ /home/halsn/Documents/ubuntu-config/" -l halsn &
-
-exit 0
+su -c "/bin/ls /home/halsn/.bashrc | entr -p cp /_ /home/halsn/ubuntu-config/" -l halsn &
