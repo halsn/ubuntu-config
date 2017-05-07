@@ -123,6 +123,7 @@ alias rm="rm -i"
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+alias proxy="https_proxy=https://127.0.0.1:35227"
 # google翻译
 alias trs="trans -t zh+en "
 # 查找同义词
@@ -137,11 +138,14 @@ add_github_repo() {
 delete_github_repo() {
   curl -u $1 -X DELETE httpsss://api.github.com/repos/$1/$2
 }
-# 常用git push流程
+# 常用git push
 git_commit() {
   git add . -A && git commit -m $1 && git push
 }
-
+# git clone
+github_clone() {
+  git clone git@github.com:$1/$2
+}
 export NVM_DIR="$HOME/.nvm"
 # 添加自定义文件夹至PATH
 export PATH=$PATH:$HOME/App
@@ -192,5 +196,3 @@ docker_enter() {
       fi
   fi
 }
-
-alias proxy="https_proxy=https://127.0.0.1:35227"
