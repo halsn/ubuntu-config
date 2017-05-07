@@ -57,4 +57,3 @@ tar -zxf robomongo.tar.gz && cd robomongo
 ROBODIR=$(pwd)
 cd /usr/local/bin/
 sudo ln -s $ROBODIR/bin/robomongo .
-ls
