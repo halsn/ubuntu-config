@@ -137,6 +137,10 @@ add_github_repo() {
 delete_github_repo() {
   curl -u $1 -X DELETE https://api.github.com/repos/$1/$2
 }
+# 常用git push流程
+git_commit() {
+  git add . -A && git commit -m $1 && git push
+}
 
 export NVM_DIR="$HOME/.nvm"
 # 添加自定义文件夹至PATH
