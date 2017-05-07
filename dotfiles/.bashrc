@@ -144,7 +144,7 @@ git_commit() {
 }
 # git clone
 github_clone() {
-  git clone git@github.com:$1/$2
+  git clone git@github.com:halsn/$1
 }
 export NVM_DIR="$HOME/.nvm"
 # 添加自定义文件夹至PATH
