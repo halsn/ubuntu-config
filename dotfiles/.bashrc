@@ -142,7 +142,7 @@ delete_github_repo() {
 git_commit() {
   git add . -A && git commit -m $1 && git push
 }
-# git clone
+# git clone from my user account
 github_clone() {
   git clone git@github.com:halsn/$1
 }
