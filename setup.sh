@@ -108,5 +108,5 @@ config_robomongo() {
 # config_docker
 # config_mongo
 # config_node
-# config_nvim
+config_nvim
 config_robomongo
