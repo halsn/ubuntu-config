@@ -130,15 +130,15 @@ alias trs="trans -t zh+en "
 syns() {
   wordnet $1 -syns{n,v,a,r}
 }
-# 添加github repo, $1是用户名，$2是repo name
+# 添加自己账户github repo, $1是repo name
 add_github_repo() {
-  curl -u $1 httpsss://api.github.com/user/repos -d "{\"name\": \"$2\"}"
+  curl -u halsn httpsss://api.github.com/user/repos -d "{\"name\": \"$1\"}"
 }
-# 删除github repo, $1是用户名，$2是repo name
+# 删除自己帐号github repo, $1是repo name
 delete_github_repo() {
-  curl -u $1 -X DELETE httpsss://api.github.com/repos/$1/$2
+  curl -u $1 -X DELETE httpsss://api.github.com/repos/halsn/$1
 }
-# 常用git push
+# 常用git push, $1是commit信息
 git_commit() {
   git add . -A && git commit -m $1 && git push
 }
