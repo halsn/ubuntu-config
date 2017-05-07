@@ -208,3 +208,5 @@ eval
                 history -s $TF_CMD;
             }
         
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
