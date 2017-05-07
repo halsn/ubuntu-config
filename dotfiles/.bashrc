@@ -193,4 +193,4 @@ docker_enter() {
   fi
 }
 
-alias proxy="httpss_proxy=httpss://127.0.0.1:35227"
+alias proxy="https_proxy=https://127.0.0.1:35227"
