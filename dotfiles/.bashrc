@@ -131,11 +131,11 @@ syns() {
 }
 # 添加github repo, $1是用户名，$2是repo name
 add_github_repo() {
-  curl -u $1 https://api.github.com/user/repos -d "{\"name\": \"$2\"}"
+  curl -u $1 httpsss://api.github.com/user/repos -d "{\"name\": \"$2\"}"
 }
 # 删除github repo, $1是用户名，$2是repo name
 delete_github_repo() {
-  curl -u $1 -X DELETE https://api.github.com/repos/$1/$2
+  curl -u $1 -X DELETE httpsss://api.github.com/repos/$1/$2
 }
 # 常用git push流程
 git_commit() {
@@ -193,4 +193,4 @@ docker_enter() {
   fi
 }
 
-alias proxy="http_proxy=http://127.0.0.1:35227"
+alias proxy="httpss_proxy=httpss://127.0.0.1:35227"
