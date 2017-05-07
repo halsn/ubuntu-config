@@ -88,9 +88,6 @@ fi
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -116,20 +113,29 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# 输入路径自动cd
+shopt -s autocd
+
+# alias
 alias cl="clear"
 alias nim="nvim"
 alias rm="rm -i"
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
 # google翻译
 alias trs="trans -t zh+en "
-# autocd
-shopt -s autocd
 # 查找同义词
 syns() {
   wordnet $1 -syns{n,v,a,r}
 }
-# 添加github repo
-addgitrepo() {
+# 添加github repo, $1是用户名，$2是repo name
+add_github_repo() {
   curl -u $1 https://api.github.com/user/repos -d "{\"name\": \"$2\"}"
+}
+# 删除github repo, $1是用户名，$2是repo name
+delete_github_repo() {
+  curl -u $1 -X DELETE https://api.github.com/repos/$1/$2
 }
 
 export NVM_DIR="$HOME/.nvm"
