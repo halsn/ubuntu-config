@@ -8,17 +8,21 @@ install_first() {
 }
 install_first
 
+config_ssh() {
+  ssh-keygen -t rsa -b 4096 -C "xuhalsn@gmail.com"
+  # 没有这个命令会出现无法clone的问题
+  # https://askubuntu.com/questions/762541/ubuntu-16-04-ssh-sign-and-send-pubkey-signing-failed-agent-refused-operation
+  ssh-add
+}
+config_ssh
+
 config_git() {
   echo "---------------git---------------"
-  ssh-keygen -t rsa -b 4096 -C "xuhalsn@gmail.com"
   curl -u "halsn" \
     --data "{\"title\":\"VM_`date +%Y%m%d%H%M%S`\",\"key\":\"`cat ~/.ssh/id_rsa.pub`\"}" \
     https://api.github.com/user/keys
   git config --global user.email "xuhalsn@gmail.com"
   git config --global user.name "halsn"
-  # 没有这个命令会出现无法clone的问题
-  # https://askubuntu.com/questions/762541/ubuntu-16-04-ssh-sign-and-send-pubkey-signing-failed-agent-refused-operation
-  ssh-add
   echo "------------finished-------------"
 }
 config_git
