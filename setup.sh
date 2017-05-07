@@ -12,7 +12,7 @@ config_ssh() {
   ssh-keygen -t rsa -b 4096 -C "xuhalsn@gmail.com" -q
   # 没有这个命令会出现无法clone的问题
   # https://askubuntu.com/questions/762541/ubuntu-16-04-ssh-sign-and-send-pubkey-signing-failed-agent-refused-operation
-  ssh-add
+  # ssh-add
 }
 config_ssh
 
