@@ -136,7 +136,7 @@ add_github_repo() {
 }
 # 删除自己帐号github repo, $1是repo name
 delete_github_repo() {
-  curl -u $1 -X DELETE https://api.github.com/repos/halsn/$1
+  curl -u halsn -X DELETE https://api.github.com/repos/halsn/$1
 }
 # 常用git push, $1是commit信息
 git_commit() {
