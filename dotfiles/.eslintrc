@@ -40,7 +40,8 @@
     "strict": [0],
     "semi": ["error", "never"],
     "jsx-a11y/img-has-alt": [0],
-    "no-underscore-dangle": [0]
+    "no-underscore-dangle": [0],
+    "react/no-array-index-key": [0]
   },
   "parserOptions": {
     "ecmaFeatures": {
