@@ -197,7 +197,7 @@ docker_enter() {
   fi
 }
 eval 
-            function fuck() {
+            fuck () {
                 TF_PREVIOUS=$(fc -ln -1);
                 TF_CMD=$(
                     TF_ALIAS=fuck
