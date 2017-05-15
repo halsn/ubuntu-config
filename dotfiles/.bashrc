@@ -159,54 +159,54 @@ docker_enter() {
   #if [ -e $(dirname "$0")/nsenter ]; then
   #Change for centos bash running
   if [ -e $(dirname '$0')/nsenter ]; then
-      # with boot2docker, nsenter is not in the PATH but it is in the same folder
-      NSENTER=$(dirname "$0")/nsenter
+    # with boot2docker, nsenter is not in the PATH but it is in the same folder
+    NSENTER=$(dirname "$0")/nsenter
   else
-      # if nsenter has already been installed with path notified, here will be clarified
-      NSENTER=$(which nsenter)
-      #NSENTER=nsenter
+    # if nsenter has already been installed with path notified, here will be clarified
+    NSENTER=$(which nsenter)
+    #NSENTER=nsenter
   fi
   [ -z "$NSENTER" ] && echo "WARN Cannot find nsenter" && return
 
   if [ -z "$1" ]; then
-      echo "Usage: `basename "$0"` CONTAINER [COMMAND [ARG]...]"
-      echo ""
-      echo "Enters the Docker CONTAINER and executes the specified COMMAND."
-      echo "If COMMAND is not specified, runs an interactive shell in CONTAINER."
+    echo "Usage: `basename "$0"` CONTAINER [COMMAND [ARG]...]"
+    echo ""
+    echo "Enters the Docker CONTAINER and executes the specified COMMAND."
+    echo "If COMMAND is not specified, runs an interactive shell in CONTAINER."
   else
-      PID=$(sudo docker inspect --format "{{.State.Pid}}" "$1")
-      if [ -z "$PID" ]; then
-          echo "WARN Cannot find the given container"
-          return
-      fi
-      shift
+    PID=$(sudo docker inspect --format "{{.State.Pid}}" "$1")
+    if [ -z "$PID" ]; then
+      echo "WARN Cannot find the given container"
+      return
+    fi
+    shift
 
-      OPTS="--target $PID --mount --uts --ipc --net --pid"
+    OPTS="--target $PID --mount --uts --ipc --net --pid"
 
-      if [ -z "$1" ]; then
-          # No command given.
-          # Use su to clear all host environment variables except for TERM,
-          # initialize the environment variables HOME, SHELL, USER, LOGNAME, PATH,
-          # and start a login shell.
-          #sudo $NSENTER "$OPTS" su - root
-          sudo $NSENTER --target $PID --mount --uts --ipc --net --pid su - root
-      else
-          # Use env to clear all host environment variables.
-          sudo $NSENTER --target $PID --mount --uts --ipc --net --pid env -i $@
-      fi
+    if [ -z "$1" ]; then
+      # No command given.
+      # Use su to clear all host environment variables except for TERM,
+      # initialize the environment variables HOME, SHELL, USER, LOGNAME, PATH,
+      # and start a login shell.
+      #sudo $NSENTER "$OPTS" su - root
+      sudo $NSENTER --target $PID --mount --uts --ipc --net --pid su - root
+    else
+      # Use env to clear all host environment variables.
+      sudo $NSENTER --target $PID --mount --uts --ipc --net --pid env -i $@
+    fi
   fi
 }
-eval 
-            function fuck () {
-                TF_PREVIOUS=$(fc -ln -1);
-                TF_CMD=$(
-                    TF_ALIAS=fuck
-                    TF_SHELL_ALIASES=$(alias)
-                    PYTHONIOENCODING=utf-8
-                    thefuck $TF_PREVIOUS THEFUCK_ARGUMENT_PLACEHOLDER $@
-                ) && eval $TF_CMD;
-                history -s $TF_CMD;
-            }
-        
+eval
+function fuck () {
+  TF_PREVIOUS=$(fc -ln -1);
+  TF_CMD=$(
+  TF_ALIAS=fuck
+  TF_SHELL_ALIASES=$(alias)
+  PYTHONIOENCODING=utf-8
+  thefuck $TF_PREVIOUS THEFUCK_ARGUMENT_PLACEHOLDER $@
+  ) && eval $TF_CMD;
+  history -s $TF_CMD;
+}
+
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
