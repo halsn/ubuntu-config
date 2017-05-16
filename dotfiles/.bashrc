@@ -148,7 +148,10 @@ github_clone() {
 }
 # convert github repo to mobi ebook
 convert_git_repo_to_mobi() {
-  src2html -l -c -n -t 2 -j 4 . $1
+  src2html -l -c -n -t 2 -j 4 . $1 && ebook-convert html_out/index.html project.mobi \
+    --output-profile kindle --no-inline-toc \
+    --title "Your Book Title" --publisher 'Your Name' \
+    --language en --authors 'Your Author Name'
 }
 export NVM_DIR="$HOME/.nvm"
 # 添加自定义文件夹至PATH
