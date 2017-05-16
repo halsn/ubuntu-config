@@ -150,7 +150,7 @@ github_clone() {
 convert_git_repo_to_mobi() {
   src2html -l -c -n -t 2 -j 4 . $1 && ebook-convert html_out/index.html project.mobi \
     --output-profile kindle --no-inline-toc \
-    --title $2 --publisher 'halsn' \
+    --title $1 --publisher 'halsn' \
     --language en --authors 'halsn'
 }
 export NVM_DIR="$HOME/.nvm"
