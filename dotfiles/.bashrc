@@ -161,6 +161,7 @@ export PATH=$PATH:$HOME/App
 # docker相关
 alias docker-pid="docker inspect --format '{{.State.Pid}}'"
 alias docker-ip="docker inspect --format '{{ .NetworkSettings.IPAddress }}'"
+alias docker-rm-none="docker rmi $(docker images --filter dangling=true -q)"
 
 docker_enter() {
   #if [ -e $(dirname "$0")/nsenter ]; then
