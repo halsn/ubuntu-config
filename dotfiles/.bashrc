@@ -161,8 +161,8 @@ export PATH=$PATH:$HOME/App
 # docker相关
 alias docker-pid="docker inspect --format '{{.State.Pid}}'"
 alias docker-ip="docker inspect --format '{{ .NetworkSettings.IPAddress }}'"
-alias docker-rmi-none="docker rmi $(docker images --filter dangling=true -q)"
 alias docker-rmi-none="docker images | grep none | awk '{print $3 }' | xargs docker rmi"
+
 docker_enter() {
   #if [ -e $(dirname "$0")/nsenter ]; then
   #Change for centos bash running
