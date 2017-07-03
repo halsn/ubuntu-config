@@ -197,7 +197,7 @@
     "react/no-did-update-set-state": "error",
     "react/no-unknown-property": "error",
     "react/no-unused-prop-types": "error",
-    "react/prop-types": "error",
+    "react/prop-types": [0],
     "react/react-in-jsx-scope": "error",
     "jsx-quotes": ["error", "prefer-single"],
     "react/jsx-boolean-value": "error",
