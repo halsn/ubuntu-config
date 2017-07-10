@@ -162,9 +162,9 @@ export PATH=$PATH:$HOME/App
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
 
 # docker相关
-alias docker-pid="docker inspect --format '{{.State.Pid}}'"
-alias docker-ip="docker inspect --format '{{ .NetworkSettings.IPAddress }}'"
-alias docker-rmi-none="docker images | grep none | awk '{print $3 }' | xargs docker rmi"
+alias docker_pid="docker inspect --format '{{.State.Pid}}'"
+alias docker_ip="docker inspect --format '{{ .NetworkSettings.IPAddress }}'"
+alias docker_rmi_none="docker images | grep none | awk '{print $3 }' | xargs docker rmi"
 
 docker_enter() {
   #if [ -e $(dirname "$0")/nsenter ]; then
