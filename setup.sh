@@ -3,7 +3,7 @@
 sudo apt update
 
 #必备软件
-install() {
+first_install() {
   sudo apt install -y git ibus-rime ppa-purge tree time curl wget gawk wordnet entr inotify-tools silversearcher-ag htop ncdu
 }
 
@@ -108,7 +108,7 @@ config_robomongo() {
   echo "------------------finished-----------------"
 }
 
-install
+first_install
 config_ssh
 config_git
 config_ubuntu
