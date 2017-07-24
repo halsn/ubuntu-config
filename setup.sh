@@ -91,8 +91,8 @@ config_nvim() {
 #fzf
 config_fzf() {
   echo "---------------------fzf------------------"
-  git clone --depth 1 https://github.com/junegunn/fzf.git & cd ~/.fzf
-  ~/.fzf/install
+  git clone --depth 1 https://github.com/junegunn/fzf.git
+  echo ~/.fzf/install | bash
   echo "------------------finished----------------"
 }
 
