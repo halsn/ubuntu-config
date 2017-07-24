@@ -77,7 +77,7 @@ config_node() {
   source $HOME/.profile
   source $HOME/.bashrc
   nvm install stable
-  npm install nodemon js-beautify htmlhint eslint eslint_d jsonlint csslint -g
+  npm install http-server nodemon js-beautify htmlhint eslint eslint_d jsonlint csslint -g
   echo "---------------finished----------------"
 }
 
