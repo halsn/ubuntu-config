@@ -88,6 +88,12 @@ config_nvim() {
   echo "---------------finished-----------------"
 }
 
+#fzf
+config_fzf() {
+  git clone --depth 1 https://github.com/junegunn/fzf.git & cd ~/.fzf
+  ~/.fzf/install
+}
+
 # Robomongo
 config_robomongo() {
   echo "------------------robomongo----------------"
