@@ -90,8 +90,10 @@ config_nvim() {
 
 #fzf
 config_fzf() {
+  echo "---------------------fzf------------------"
   git clone --depth 1 https://github.com/junegunn/fzf.git & cd ~/.fzf
   ~/.fzf/install
+  echo "------------------finished----------------"
 }
 
 # Robomongo
