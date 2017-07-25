@@ -60,6 +60,7 @@ config_docker() {
 # Docker Compose
 config_docker_compose() {
   echo "---------docker_compose------------"
+  sudo -i
   curl https://github.com/docker/compose/releases/download/1.14.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
   chmod +x /usr/local/bin/docker-compose
   curl -L https://raw.githubusercontent.com/docker/compose/master/contrib/completion/bash/docker-compose -o /etc/bash_completion.d/docker-compose
