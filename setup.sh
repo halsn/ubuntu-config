@@ -57,7 +57,7 @@ config_docker() {
   echo "------------finished---------------"
 }
 # Docker Compose
-config_docker_compose {
+config_docker_compose() {
   echo "--------------docker---------------"
   curl -sSL https://get.daocloud.io/docker | sh
   sudo usermod -aG docker $USER
