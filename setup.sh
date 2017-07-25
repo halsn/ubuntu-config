@@ -125,9 +125,9 @@ config_robomongo() {
 # config_ubuntu
 # config_lantern
 # config_docker
-config_docker_compose
+# config_docker_compose
 # config_mongo
 # config_node
 # config_nvim
-# config_fzf
+config_fzf
 # config_robomongo
