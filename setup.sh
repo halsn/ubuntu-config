@@ -117,7 +117,7 @@ config_robomongo() {
   echo "------------------finished-----------------"
 }
 
-first_install
+# first_install
 # config_ssh
 # config_git
 # config_ubuntu
