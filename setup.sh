@@ -56,13 +56,11 @@ config_docker() {
   sudo systemctl restart docker.service
   echo "------------finished---------------"
 }
+
 # Docker Compose
 config_docker_compose() {
-  echo "--------------docker---------------"
-  curl -sSL https://get.daocloud.io/docker | sh
-  sudo usermod -aG docker $USER
-  curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://26cc5846.m.daocloud.io
-  sudo systemctl restart docker.service
+  echo "---------docker_compose------------"
+  curl -L https://github.com/docker/compose/releases/download/1.14.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
   echo "------------finished---------------"
 }
 
