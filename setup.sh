@@ -90,7 +90,7 @@ config_node() {
   nvm install stable
   npm install http-server nodemon js-beautify htmlhint jsonlint csslint -g
   # eslint
-  npm install eslint eslint_d eslint-plugin-import eslint-plugin-node eslint-plugin-promise eslint-plugin-standard eslint-plugin-jest eslint-plugin-react 
+  npm install eslint eslint_d eslint-plugin-import eslint-plugin-node eslint-plugin-promise eslint-plugin-standard eslint-plugin-jest eslint-plugin-react -g
   echo "---------------finished----------------"
 }
 
