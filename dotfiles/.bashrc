@@ -222,3 +222,5 @@ fuck () {
 
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+export PATH="$HOME/.yarn/bin:$PATH"
