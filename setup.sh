@@ -27,7 +27,7 @@ config_git() {
 config_ubuntu() {
   echo "--------------clone ubuntu-config---------------"
   cd $HOME
-  git clone git@github.com:halsn/ubuntu-config && cd ubuntu-config
+  git clone https://github.com/halsn/ubuntu-config && cd ubuntu-config
   cp -a ./dotfiles/. $HOME
   cp -a ./App $HOME
   sudo cp -a ./config/rc.local /etc/
