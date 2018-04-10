@@ -4,7 +4,7 @@ sudo apt update
 
 #必备软件
 first_install() {
-  sudo apt install -y git ibus-rime ppa-purge tree time curl wget gawk wordnet entr inotify-tools silversearcher-ag htop ncdu exuberant-ctags unity-tweak-tool
+  sudo apt install -y git ibus-rime ppa-purge tree time curl wget gawk wordnet entr inotify-tools silversearcher-ag htop ncdu exuberant-ctags unity-tweak-tool nyancat
 }
 
 config_ssh() {
