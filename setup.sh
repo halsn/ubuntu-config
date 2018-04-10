@@ -145,4 +145,4 @@ config_docker_compose
 config_node
 config_nvim
 config_fzf
-config_robomongo
+# config_robomongo
