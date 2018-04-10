@@ -140,7 +140,8 @@ delete_github_repo() {
 }
 # 常用git push, $1是commit信息
 git_commit() {
-  git add . -A && git commit -m $1 && git push
+  # git add . -A && git commit -m $1 && git push
+  git commit -m $1 && git push
 }
 # git clone from my user account
 github_clone() {
