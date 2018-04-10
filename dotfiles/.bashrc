@@ -218,6 +218,7 @@ fuck () {
   ) && eval $TF_CMD;
   history -s $TF_CMD;
 }
+
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 export PATH="$HOME/.yarn/bin:$PATH"
