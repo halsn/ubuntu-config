@@ -50,7 +50,20 @@ config_lantern() {
 #Docker
 config_docker() {
   echo "--------------docker---------------"
-  curl -sSL https://get.daocloud.io/docker | sh
+  sudo apt-get update
+  sudo apt-get install -y \
+      apt-transport-https \
+      ca-certificates \
+      curl \
+      software-properties-common
+  curl -fsSL https://download.daocloud.io/docker/linux/ubuntu/gpg | sudo apt-key add -
+  sudo add-apt-repository \
+     "deb [arch=$(dpkg --print-architecture)] https://download.daocloud.io/docker/linux/ubuntu \
+     $(lsb_release -cs) \
+     stable"
+  sudo apt-get update
+  sudo apt-get install -y -q docker-ce=17.09.1*
+  sudo service docker start
   sudo usermod -aG docker $USER
   curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://26cc5846.m.daocloud.io
   sudo systemctl restart docker.service
@@ -125,7 +138,7 @@ first_install
 config_ssh
 config_git
 config_ubuntu
-config_lantern
+# config_lantern
 config_docker
 config_docker_compose
 # config_mongo
