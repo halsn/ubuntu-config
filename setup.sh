@@ -34,19 +34,6 @@ config_ubuntu() {
   echo "-------------------finished---------------------"
 }
 
-#Lantern
-config_lantern() {
-  echo "---------------lantern---------------"
-  wget https://raw.githubusercontent.com/getlantern/lantern-binaries/master/lantern-installer-beta-64-bit.deb -O lantern.deb
-  sudo dpkg -i lantern.deb
-  sudo apt-get install -f
-  # echo "----------打开Lantern查看端口------------"
-  # echo "---------------HTTP端口------------------"
-  # read HTTPPORT
-  # echo "alias proxy=\"http_proxy=http://127.0.0.1:$HTTPPORT\"" | tee -a $HOME/.bashrc
-  echo "--------------finished-------------------"
-}
-
 #Docker
 config_docker() {
   echo "--------------docker---------------"
@@ -138,7 +125,6 @@ first_install
 config_ssh
 config_git
 config_ubuntu
-# config_lantern
 config_docker
 config_docker_compose
 # config_mongo
