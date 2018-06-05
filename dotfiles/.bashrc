@@ -123,6 +123,8 @@ alias rm="rm -i"
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+alias lm='ll | more'
+# alias proxy="https_proxy=https://127.0.0.1:44831"
 # google翻译
 alias trs="trans -t zh+en "
 # 查找同义词
