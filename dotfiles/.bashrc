@@ -122,7 +122,7 @@ alias nim="nvim"
 alias rm="rm -i"
 alias ll='ls -alF'
 alias la='ls -A'
-alias l='ll | less'
+alias l='ll | more'
 # google翻译
 alias trs="trans -t zh+en "
 # 查找同义词
