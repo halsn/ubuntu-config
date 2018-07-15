@@ -153,7 +153,7 @@ convert_git_repo_to_mobi() {
     --language en --authors 'halsn'
 }
 clone_site() {
-  wget -P $1 -mpck --user-agent=$2 -e robots=off --wait 1 -E $3
+  wget -P $1 -mpck -e robots=off --wait 1 -E $2
 }
 export NVM_DIR="$HOME/.nvm"
 # 添加自定义文件夹至PATH
