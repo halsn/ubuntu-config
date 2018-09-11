@@ -199,7 +199,7 @@
     "react/no-unknown-property": "error",
     "react/no-unused-prop-types": "error",
     "react/prop-types": [0],
-    "react/react-in-jsx-scope": "error",
+    "react/react-in-jsx-scope": "off",
     "jsx-quotes": ["error", "prefer-single"],
     "react/jsx-boolean-value": "error",
     "react/jsx-curly-spacing": ["error", "never"],
