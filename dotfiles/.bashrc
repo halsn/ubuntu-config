@@ -221,3 +221,5 @@ fuck () {
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 export PATH="$HOME/.yarn/bin:$PATH"
+
+[[ -s "/home/halsn/.gvm/scripts/gvm" ]] && source "/home/halsn/.gvm/scripts/gvm"
