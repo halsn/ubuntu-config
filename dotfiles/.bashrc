@@ -225,3 +225,5 @@ fuck () {
 export PATH="$HOME/.yarn/bin:$PATH"
 
 [[ -s "/home/halsn/.gvm/scripts/gvm" ]] && source "/home/halsn/.gvm/scripts/gvm"
+
+export GOPATH="$HOME/.go"
