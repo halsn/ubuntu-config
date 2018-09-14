@@ -88,6 +88,7 @@ config_node() {
   source $HOME/.profile
   source $HOME/.bashrc
   nvm install stable
+  npm i -g eslint-plugin-import eslint-plugin-node eslint-plugin-promise eslint-plugin-standard eslint-plugin-jest eslint-plugin-react
   echo "---------------finished----------------"
 }
 
@@ -97,7 +98,7 @@ config_yarn() {
   echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
   sudo apt-get update
   sudo apt-get install --no-install-recommends yarn
-  yarn global add http-server nodemon js-beautify htmlhint jsonlint csslint eslint eslint_d eslint-plugin-import eslint-plugin-node eslint-plugin-promise eslint-plugin-standard eslint-plugin-jest eslint-plugin-react
+  yarn global add http-server nodemon js-beautify htmlhint jsonlint csslint eslint eslint_d 
   echo "---------------finished----------------"
 }
 
