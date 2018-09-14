@@ -128,17 +128,15 @@ config_robomongo() {
   echo "------------------finished-----------------"
 }
 
+first_install
+config_ssh
+config_git
+config_ubuntu
+config_docker
+config_docker_compose
+# config_mongo
+config_node
 config_yarn
-
-# first_install
-# config_ssh
-# config_git
-# config_ubuntu
-# config_docker
-# config_docker_compose
-# # config_mongo
-# config_node
-# config_yarn
-# config_nvim
-# config_fzf
-# # config_robomongo
+config_nvim
+config_fzf
+# config_robomongo
