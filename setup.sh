@@ -88,9 +88,9 @@ config_node() {
   source $HOME/.profile
   source $HOME/.bashrc
   nvm install stable
-  npm install http-server nodemon js-beautify htmlhint jsonlint csslint yarn -g
+  npm install yarn -g
   # eslint
-  yarn global add eslint eslint_d eslint-plugin-import eslint-plugin-node eslint-plugin-promise eslint-plugin-standard eslint-plugin-jest eslint-plugin-react
+  yarn global add http-server nodemon js-beautify htmlhint jsonlint csslint eslint eslint_d eslint-plugin-import eslint-plugin-node eslint-plugin-promise eslint-plugin-standard eslint-plugin-jest eslint-plugin-react
   echo "---------------finished----------------"
 }
 
