@@ -16,7 +16,7 @@
 
   "plugins": [
     "import",
-    "node",
+    /* "node", */
     "promise",
     "standard",
     "jest",
@@ -181,8 +181,8 @@
     "import/no-duplicates": "error",
     "import/no-webpack-loader-syntax": "error",
 
-    "node/no-deprecated-api": "error",
-    "node/process-exit-as-throw": "error",
+    /* "node/no-deprecated-api": "error", */
+    /* "node/process-exit-as-throw": "error", */
 
     "promise/param-names": "error",
 
