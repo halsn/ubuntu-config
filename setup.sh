@@ -83,7 +83,7 @@ config_mongo() {
 # Node
 config_node() {
   echo "-----------------node------------------"
-  curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
+  curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
   source $HOME/.nvm/nvm.sh
   source $HOME/.profile
   source $HOME/.bashrc
