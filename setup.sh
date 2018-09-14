@@ -88,7 +88,15 @@ config_node() {
   source $HOME/.profile
   source $HOME/.bashrc
   nvm install stable
-  npm install yarn -g
+  echo "---------------finished----------------"
+}
+
+config_yarn() {
+  echo "-----------------yarn------------------"
+  curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+  echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+  sudo apt-get update
+  sudo apt-get install --no-install-recommends yarn
   # eslint
   yarn global add http-server nodemon js-beautify htmlhint jsonlint csslint eslint eslint_d eslint-plugin-import eslint-plugin-node eslint-plugin-promise eslint-plugin-standard eslint-plugin-jest eslint-plugin-react
   echo "---------------finished----------------"
