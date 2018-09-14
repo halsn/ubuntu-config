@@ -16,8 +16,8 @@
 
   "plugins": [
     "import",
-    "node",
-    "promise",
+    /* "node", */
+    /* "promise", */
     "standard",
     "jest",
     "react"
@@ -181,10 +181,10 @@
     "import/no-duplicates": "error",
     "import/no-webpack-loader-syntax": "error",
 
-    "node/no-deprecated-api": "error",
-    "node/process-exit-as-throw": "error",
+    /* "node/no-deprecated-api": "error", */
+    /* "node/process-exit-as-throw": "error", */
 
-    "promise/param-names": "error",
+    /* "promise/param-names": "error", */
 
     "standard/array-bracket-even-spacing": ["error", "either"],
     "standard/computed-property-even-spacing": ["error", "even"],
