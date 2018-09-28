@@ -227,3 +227,6 @@ export PATH="$HOME/.yarn/bin:$PATH"
 [[ -s "/home/halsn/.gvm/scripts/gvm" ]] && source "/home/halsn/.gvm/scripts/gvm"
 
 export GOPATH="$HOME/.go"
+
+# added by Anaconda3 installer
+export PATH="/home/halsn/anaconda3/bin:$PATH"
