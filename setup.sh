@@ -135,7 +135,7 @@ config_proxychains4() {
   git clone https://github.com/rofl0r/proxychains-ng ~/tmp/proxychains4
   cd /home/halsn/tmp/proxychains4
   sudo make install
-  sudo make install-config
+  sudo cp -a ./config/proxychains.conf /etc/
   echo "------------------finished-----------------"
 }
 
