@@ -151,14 +151,6 @@ github_clone() {
   git clone git@github.com:halsn/$1
 }
 
-# convert github repo to mobi ebook
-convert_git_repo_to_mobi() {
-  src2html -l -c -n -t 2 -j 4 . $1 && ebook-convert html_out/index.html project.mobi \
-    --output-profile kindle --no-inline-toc \
-    --title $1 --publisher 'halsn' \
-    --language en --authors 'halsn'
-}
-
 clone_site() {
   wget -P $1 -mpck -e robots=off --wait 1 -E $2
 }
