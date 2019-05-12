@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-sudo apt-get update
+sudo apt update
 
 #必备软件
 install_first() {
