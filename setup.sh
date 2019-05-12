@@ -131,7 +131,7 @@ config_robomongo() {
 
 # proxychains-ng
 config_proxychains4() {
-  echo 'foo'
+  echo "----------------proxychains4---------------"
 }
 
 first_install
