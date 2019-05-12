@@ -215,17 +215,5 @@ docker_enter() {
     fi
   fi
 }
-eval
-fuck () {
-  TF_PREVIOUS=$(fc -ln -1);
-  TF_CMD=$(
-  TF_ALIAS=fuck
-  TF_SHELL_ALIASES=$(alias)
-  PYTHONIOENCODING=utf-8
-  thefuck $TF_PREVIOUS THEFUCK_ARGUMENT_PLACEHOLDER $@
-  ) && eval $TF_CMD;
-  history -s $TF_CMD;
-}
-
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
