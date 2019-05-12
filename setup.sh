@@ -129,6 +129,11 @@ config_robomongo() {
   echo "------------------finished-----------------"
 }
 
+# proxychains-ng
+config_proxychains4() {
+
+}
+
 first_install
 config_ssh
 config_git
@@ -141,3 +146,4 @@ config_yarn
 config_nvim
 config_fzf
 # config_robomongo
+config_proxychains4
