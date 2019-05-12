@@ -3,13 +3,8 @@
 sudo apt update
 
 #必备软件
-<<<<<<< HEAD
-install_first() {
-  sudo apt install -y git ibus-rime ppa-purge tree time curl wget gawk wordnet entr inotify-tools silversearcher-ag htop ncdu
-=======
 first_install() {
   sudo apt install -y git ibus-rime ppa-purge tree time curl wget gawk wordnet entr inotify-tools silversearcher-ag htop ncdu exuberant-ctags unity-tweak-tool nyancat
->>>>>>> 6d368b05842e114c59ab433a200a9b42a81c7c4f
 }
 
 config_ssh() {
