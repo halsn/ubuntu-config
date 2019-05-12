@@ -104,7 +104,7 @@ install_first
 config_ssh
 config_git
 config_ubuntu
-config_lantern
+# config_lantern
 config_docker
 config_mongo
 config_node
