@@ -132,6 +132,9 @@ config_robomongo() {
 # proxychains-ng
 config_proxychains4() {
   echo "----------------proxychains4---------------"
+  git clone https://github.com/junegunn/fzf.git ~/.fzf
+  ~/.fzf/install
+  echo "------------------finished-----------------"
 }
 
 first_install
