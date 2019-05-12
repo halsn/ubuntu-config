@@ -122,8 +122,12 @@ alias nim="nvim"
 alias rm="rm -i"
 alias ll='ls -alF'
 alias la='ls -A'
+<<<<<<< HEAD
 alias l='ls -CF'
 
+=======
+alias l='ll | more'
+>>>>>>> 6d368b05842e114c59ab433a200a9b42a81c7c4f
 # google翻译
 alias trs="trans -t zh+en "
 
@@ -161,10 +165,11 @@ convert_git_repo_to_mobi() {
 }
 
 clone_site() {
-  wget -P $1 -mpck --user-agent="" -e robots=off --wait 1 -E $2
+  wget -P $1 -mpck -e robots=off --wait 1 -E $2
 }
 
 export NVM_DIR="$HOME/.nvm"
+
 # 添加自定义文件夹至PATH
 export PATH=$PATH:$HOME/App
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
@@ -215,5 +220,28 @@ docker_enter() {
     fi
   fi
 }
+<<<<<<< HEAD
+=======
+eval
+fuck () {
+  TF_PREVIOUS=$(fc -ln -1);
+  TF_CMD=$(
+  TF_ALIAS=fuck
+  TF_SHELL_ALIASES=$(alias)
+  PYTHONIOENCODING=utf-8
+  thefuck $TF_PREVIOUS THEFUCK_ARGUMENT_PLACEHOLDER $@
+  ) && eval $TF_CMD;
+  history -s $TF_CMD;
+}
+>>>>>>> 6d368b05842e114c59ab433a200a9b42a81c7c4f
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+export PATH="$HOME/.yarn/bin:$PATH"
+
+[[ -s "/home/halsn/.gvm/scripts/gvm" ]] && source "/home/halsn/.gvm/scripts/gvm"
+
+export GOPATH="$HOME/.go"
+
+# added by Anaconda3 installer
+export PATH="/home/halsn/anaconda3/bin:$PATH"

@@ -3,8 +3,13 @@
 sudo apt update
 
 #必备软件
+<<<<<<< HEAD
 install_first() {
   sudo apt install -y git ibus-rime ppa-purge tree time curl wget gawk wordnet entr inotify-tools silversearcher-ag htop ncdu
+=======
+first_install() {
+  sudo apt install -y git ibus-rime ppa-purge tree time curl wget gawk wordnet entr inotify-tools silversearcher-ag htop ncdu exuberant-ctags unity-tweak-tool nyancat
+>>>>>>> 6d368b05842e114c59ab433a200a9b42a81c7c4f
 }
 
 config_ssh() {
@@ -27,33 +32,44 @@ config_git() {
 config_ubuntu() {
   echo "--------------clone ubuntu-config---------------"
   cd $HOME
-  git clone git@github.com:halsn/ubuntu-config && cd ubuntu-config
+  git clone git@github.com:halsn/ubuntu-config.git && cd ubuntu-config
   cp -a ./dotfiles/. $HOME
   cp -a ./App $HOME
   sudo cp -a ./config/rc.local /etc/
   echo "-------------------finished---------------------"
 }
 
-#Lantern
-config_lantern() {
-  echo "---------------lantern---------------"
-  wget https://raw.githubusercontent.com/getlantern/lantern-binaries/master/lantern-installer-beta-64-bit.deb -O lantern.deb
-  sudo dpkg -i lantern.deb
-  sudo apt-get install -f
-  # echo "----------打开Lantern查看端口------------"
-  # echo "---------------HTTP端口------------------"
-  # read HTTPPORT
-  # echo "alias proxy=\"http_proxy=http://127.0.0.1:$HTTPPORT\"" | tee -a $HOME/.bashrc
-  echo "--------------finished-------------------"
-}
-
 #Docker
 config_docker() {
   echo "--------------docker---------------"
-  curl -sSL https://get.daocloud.io/docker | sh
+  sudo apt-get update
+  sudo apt-get install -y \
+      apt-transport-https \
+      ca-certificates \
+      curl \
+      software-properties-common
+  curl -fsSL https://download.daocloud.io/docker/linux/ubuntu/gpg | sudo apt-key add -
+  sudo add-apt-repository \
+     "deb [arch=$(dpkg --print-architecture)] https://download.daocloud.io/docker/linux/ubuntu \
+     $(lsb_release -cs) \
+     stable"
+  sudo apt-get update
+  sudo apt-get install -y -q docker-ce=17.09.1*
+  sudo service docker start
   sudo usermod -aG docker $USER
   curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://26cc5846.m.daocloud.io
   sudo systemctl restart docker.service
+  echo "------------finished---------------"
+}
+
+# Docker Compose
+config_docker_compose() {
+  echo "---------docker_compose------------"
+  curl -L https://github.com/docker/compose/releases/download/1.20.1/docker-compose-`uname -s`-`uname -m` > ~/docker-compose
+  chmod +x ~/docker-compose
+  sudo mv ~/docker-compose /usr/local/bin/docker-compose
+  curl -L https://raw.githubusercontent.com/docker/compose/master/contrib/completion/bash/docker-compose -o ~/docker-compose
+  sudo mv ~/docker-compose /etc/bash_completion.d/docker-compose
   echo "------------finished---------------"
 }
 
@@ -72,12 +88,22 @@ config_mongo() {
 # Node
 config_node() {
   echo "-----------------node------------------"
-  curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
+  curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
   source $HOME/.nvm/nvm.sh
   source $HOME/.profile
   source $HOME/.bashrc
   nvm install stable
-  npm install js-beautify eslint_d babel-eslint eslint-config-airbnb eslint-plugin-import eslint-plugin-react eslint-plugin-jsx-a11y htmlhint eslint jsonlint csslint -g
+  npm i -g eslint eslint_d eslint-plugin-import eslint-plugin-node eslint-plugin-promise eslint-plugin-standard eslint-plugin-jest eslint-plugin-react
+  echo "---------------finished----------------"
+}
+
+config_yarn() {
+  echo "-----------------yarn------------------"
+  curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+  echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+  sudo apt-get update
+  sudo apt-get install --no-install-recommends yarn
+  yarn global add http-server nodemon js-beautify htmlhint jsonlint csslint
   echo "---------------finished----------------"
 }
 
@@ -86,6 +112,14 @@ config_nvim() {
   echo "-----------------nvim-------------------"
   curl -o- https://raw.githubusercontent.com/halsn/neovim-config/master/install.sh | sh
   echo "---------------finished-----------------"
+}
+
+#fzf
+config_fzf() {
+  echo "---------------------fzf------------------"
+  git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+  ~/.fzf/install
+  echo "------------------finished----------------"
 }
 
 # Robomongo
@@ -100,13 +134,19 @@ config_robomongo() {
   echo "------------------finished-----------------"
 }
 
-install_first
+first_install
 config_ssh
 config_git
 config_ubuntu
+<<<<<<< HEAD
 # config_lantern
+=======
+>>>>>>> 6d368b05842e114c59ab433a200a9b42a81c7c4f
 config_docker
-config_mongo
+config_docker_compose
+# config_mongo
 config_node
+config_yarn
 config_nvim
+config_fzf
 # config_robomongo
