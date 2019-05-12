@@ -146,10 +146,12 @@ delete_github_repo() {
 git_commit() {
   git add . -A && git commit -m $1 && git push
 }
+
 # git clone from my user account
 github_clone() {
   git clone git@github.com:halsn/$1
 }
+
 # convert github repo to mobi ebook
 convert_git_repo_to_mobi() {
   src2html -l -c -n -t 2 -j 4 . $1 && ebook-convert html_out/index.html project.mobi \
@@ -157,18 +159,20 @@ convert_git_repo_to_mobi() {
     --title $1 --publisher 'halsn' \
     --language en --authors 'halsn'
 }
+
 clone_site() {
   wget -P $1 -mpck --user-agent="" -e robots=off --wait 1 -E $2
 }
+
 export NVM_DIR="$HOME/.nvm"
 # 添加自定义文件夹至PATH
 export PATH=$PATH:$HOME/App
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
 
 # docker相关
-alias docker-pid="docker inspect --format '{{.State.Pid}}'"
-alias docker-ip="docker inspect --format '{{ .NetworkSettings.IPAddress }}'"
-alias docker-rmi-none="docker images | grep none | awk '{print $3 }' | xargs docker rmi"
+alias docker_pid="docker inspect --format '{{.State.Pid}}'"
+alias docker_ip="docker inspect --format '{{ .NetworkSettings.IPAddress }}'"
+alias docker_rmi_none="docker images | grep none | awk '{print $3 }' | xargs docker rmi"
 
 docker_enter() {
   #if [ -e $(dirname "$0")/nsenter ]; then
