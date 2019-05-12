@@ -132,8 +132,10 @@ config_robomongo() {
 # proxychains-ng
 config_proxychains4() {
   echo "----------------proxychains4---------------"
-  git clone https://github.com/junegunn/fzf.git ~/.fzf
-  ~/.fzf/install
+  git clone https://github.com/rofl0r/proxychains-ng ~/tmp/proxychains4
+  cd /home/halsn/tmp/proxychains4
+  sudo make install
+  sudo make install-config (installs proxychains.conf)
   echo "------------------finished-----------------"
 }
 
