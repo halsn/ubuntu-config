@@ -4,7 +4,7 @@ sudo apt update
 
 #必备软件
 install_first() {
-  sudo apt-get install -y git ibus-rime ppa-purge tree time curl wget gawk wordnet entr inotify-tools silversearcher-ag htop ncdu
+  sudo apt install -y git ibus-rime ppa-purge tree time curl wget gawk wordnet entr inotify-tools silversearcher-ag htop ncdu
 }
 
 config_ssh() {
