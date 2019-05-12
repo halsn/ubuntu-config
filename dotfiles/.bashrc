@@ -128,7 +128,7 @@ alias l='ls -CF'
 alias trs="trans -t zh+en "
 
 # 查找同义词
-syns() {
+synonym () {
   wordnet $1 -syns{n,v,a,r}
 }
 
@@ -136,10 +136,12 @@ syns() {
 add_github_repo() {
   curl -u halsn https://api.github.com/user/repos -d "{\"name\": \"$1\"}"
 }
+
 # 删除自己帐号github repo, $1是repo name
 delete_github_repo() {
   curl -u halsn -X DELETE https://api.github.com/repos/halsn/$1
 }
+
 # 常用git push, $1是commit信息
 git_commit() {
   git add . -A && git commit -m $1 && git push
