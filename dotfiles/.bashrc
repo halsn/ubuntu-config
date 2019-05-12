@@ -122,8 +122,7 @@ alias nim="nvim"
 alias rm="rm -i"
 alias ll='ls -alF'
 alias la='ls -A'
-alias l='ls -CF'
-
+alias l='ls -CF | more'
 # google翻译
 alias trs="trans -t zh+en "
 
@@ -161,10 +160,11 @@ convert_git_repo_to_mobi() {
 }
 
 clone_site() {
-  wget -P $1 -mpck --user-agent="" -e robots=off --wait 1 -E $2
+  wget -P $1 -mpck -e robots=off --wait 1 -E $2
 }
 
 export NVM_DIR="$HOME/.nvm"
+
 # 添加自定义文件夹至PATH
 export PATH=$PATH:$HOME/App
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
@@ -217,3 +217,12 @@ docker_enter() {
 }
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+export PATH="$HOME/.yarn/bin:$PATH"
+
+[[ -s "/home/halsn/.gvm/scripts/gvm" ]] && source "/home/halsn/.gvm/scripts/gvm"
+
+export GOPATH="$HOME/.go"
+
+# added by Anaconda3 installer
+export PATH="/home/halsn/anaconda3/bin:$PATH"
