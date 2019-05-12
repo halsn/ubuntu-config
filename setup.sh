@@ -133,10 +133,6 @@ first_install
 config_ssh
 config_git
 config_ubuntu
-<<<<<<< HEAD
-# config_lantern
-=======
->>>>>>> 6d368b05842e114c59ab433a200a9b42a81c7c4f
 config_docker
 config_docker_compose
 # config_mongo
