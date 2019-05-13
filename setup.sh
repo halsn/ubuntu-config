@@ -90,7 +90,6 @@ config_docker() {
   sudo apt-get update
   sudo apt-get install -y -q docker-ce=*
   sudo service docker start
-  sudo service docker status
   sudo usermod -aG docker $USER
   curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://f1361db2.m.daocloud.io
   sudo systemctl restart docker.service
