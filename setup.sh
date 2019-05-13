@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-set -e
-
 # Ask for the administrator password upfront.
 sudo -v
 
@@ -11,19 +9,38 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 sudo apt update
 
 #必备软件
-first_install() {
-  sudo apt install -y git ibus-rime ppa-purge tree time curl wget gawk wordnet entr inotify-tools silversearcher-ag htop ncdu exuberant-ctags unity-tweak-tool nyancat
+bootstrap() {
+  echo "-----------bootstrap-------------"
+  sudo apt install -y ibus-rime ppa-purge tree time curl wget gawk wordnet entr inotify-tools silversearcher-ag htop ncdu exuberant-ctags unity-tweak-tool nyancat vim
+  echo "------------finished-------------"
+  echo ""
 }
 
 config_ssh() {
+  echo "---------------ssh---------------"
+  if [ -d /home/halsn/.ssh ]; then
+    echo "ssh dir already exist! pass!"
+    echo "------------finished-------------"
+    echo ""
+    return 0
+  fi
   ssh-keygen -t rsa -b 4096 -C "xuhalsn@gmail.com"
   # 没有这个命令会出现无法clone的问题
   # https://askubuntu.com/questions/762541/ubuntu-16-04-ssh-sign-and-send-pubkey-signing-failed-agent-refused-operation
   ssh-add
+  echo "------------finished-------------"
+  echo ""
 }
 
 config_git() {
   echo "---------------git---------------"
+  if test $(which git); then
+    echo "git already installed! pass!"
+    echo "------------finished-------------"
+    echo ""
+    return 0
+  fi
+  sudo apt install -y git
   curl -u "halsn" \
     --data "{\"title\":\"VM_`date +%Y%m%d%H%M%S`\",\"key\":\"`cat ~/.ssh/id_rsa.pub`\"}" \
     https://api.github.com/user/keys
@@ -34,140 +51,162 @@ config_git() {
 }
 
 config_ubuntu() {
-  echo "--------------clone ubuntu-config---------------"
+  echo "-------clone ubuntu-config-------"
+  if [ -d /home/halsn/ubuntu-config ]; then
+    echo "ubuntu-config dir already exist! pass!"
+    echo "------------finished-------------"
+    echo ""
+    return 0
+  fi
   cd $HOME
   git clone git@github.com:halsn/ubuntu-config.git && cd ubuntu-config
   cp -a ./dotfiles/. $HOME
   cp -a ./App $HOME
   sudo cp -a ./config/rc.local /etc/
-  echo "-------------------finished---------------------"
+  echo "-----------finished--------------"
   echo ""
 }
 
-#Docker
+# Docker
 config_docker() {
-  echo "--------------docker---------------"
+  echo "------------docker---------------"
+  if test $(which docker); then
+    echo "docker already installed! pass!"
+    echo "------------finished-------------"
+    echo ""
+    return 0
+  fi
   sudo apt-get update
   sudo apt-get install -y \
-      apt-transport-https \
-      ca-certificates \
-      curl \
-      software-properties-common
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    software-properties-common
   curl -fsSL https://download.daocloud.io/docker/linux/ubuntu/gpg | sudo apt-key add -
   sudo add-apt-repository \
      "deb [arch=$(dpkg --print-architecture)] https://download.daocloud.io/docker/linux/ubuntu \
      $(lsb_release -cs) \
      stable"
   sudo apt-get update
-  sudo apt-get install -y -q docker-ce=17.09.1*
+  sudo apt-get install -y -q docker-ce=*
   sudo service docker start
+  sudo service docker status
   sudo usermod -aG docker $USER
-  curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://26cc5846.m.daocloud.io
+  curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://f1361db2.m.daocloud.io
   sudo systemctl restart docker.service
-  echo "------------finished---------------"
+  echo "----------finished---------------"
   echo ""
 }
 
 # Docker Compose
 config_docker_compose() {
-  echo "---------docker_compose------------"
-  curl -L https://github.com/docker/compose/releases/download/1.20.1/docker-compose-`uname -s`-`uname -m` > ~/docker-compose
+  echo "--------docker_compose-----------"
+  if test $(which docker-compose); then
+    echo "docker-compose already installed! pass!"
+    echo "------------finished-------------"
+    echo ""
+    return 0
+  fi
+  curl -L https://get.daocloud.io/docker/compose/releases/download/1.24.0/docker-compose-`uname -s`-`uname -m` > ~/docker-compose
   chmod +x ~/docker-compose
   sudo mv ~/docker-compose /usr/local/bin/docker-compose
   curl -L https://raw.githubusercontent.com/docker/compose/master/contrib/completion/bash/docker-compose -o ~/docker-compose
   sudo mv ~/docker-compose /etc/bash_completion.d/docker-compose
-  echo "------------finished---------------"
-  echo ""
-}
-
-#MongoDB
-config_mongo() {
-  echo "---------------mongodb------------------"
-  sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6
-  echo "deb [ arch=amd64,arm64 ] http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.4.list
-  sudo apt-get update
-  sudo apt-get install -y mongodb-org
-  sudo service mongod start
-  echo "sudo service mongod start" | sudo tee -a /etc/rc.local
-  echo "--------------finished-----------------"
+  echo "------------finished-------------"
   echo ""
 }
 
 # Node
 config_node() {
-  echo "-----------------node------------------"
-  curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+  echo "-------------node----------------"
+  if test $(which node); then
+    echo "node already installed! pass!"
+    echo "------------finished-------------"
+    echo ""
+    return 0
+  fi
+  if [ ! -d /home/halsn/.nvm ]; then
+    mkdir ~/.nvm
+  fi
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
   source $HOME/.nvm/nvm.sh
   source $HOME/.profile
   source $HOME/.bashrc
   nvm install stable
-  npm i -g eslint eslint_d eslint-plugin-import eslint-plugin-node eslint-plugin-promise eslint-plugin-standard eslint-plugin-jest eslint-plugin-react
-  echo "---------------finished----------------"
+  npm --registry=https://registry.npm.taobao.org --verbose i -g eslint eslint_d eslint-plugin-import eslint-plugin-node eslint-plugin-promise eslint-plugin-standard eslint-plugin-jest eslint-plugin-react yarn babel-cli webpack webpack-dev-server
+  echo "-----------finished--------------"
   echo ""
 }
 
-config_yarn() {
-  echo "-----------------yarn------------------"
-  curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-  echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-  sudo apt-get update
-  sudo apt-get install --no-install-recommends yarn
-  yarn global add http-server nodemon js-beautify htmlhint jsonlint csslint
-  echo "---------------finished----------------"
-  echo ""
-}
-
-#NVim
+# NVim
 config_nvim() {
-  echo "-----------------nvim-------------------"
+  echo "-------------nvim----------------"
+  if test $(which nvim); then
+    echo "nvim already installed! pass!"
+    echo "------------finished-------------"
+    echo ""
+    return 0
+  fi
   curl -o- https://raw.githubusercontent.com/halsn/neovim-config/master/install.sh | sh
-  echo "---------------finished-----------------"
+  echo "-----------finished--------------"
   echo ""
 }
 
-#fzf
+# fzf
 config_fzf() {
-  echo "---------------------fzf------------------"
+  echo "-------------fzf----------------"
+  if test $(which fzf); then
+    echo "fzf already installed! pass!"
+    echo "------------finished-------------"
+    echo ""
+    return 0
+  fi
+  if [ -d /home/halsn/.fzf ]; then
+    rm -rf ~/.fzf
+  fi
   git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
   ~/.fzf/install
-  echo "------------------finished----------------"
-  echo ""
-}
-
-# Robomongo
-config_robomongo() {
-  echo "------------------robomongo----------------"
-  wget https://download.robomongo.org/0.9.0/linux/robomongo-0.9.0-linux-x86_64-0786489.tar.gz -O robomongo.tar.gz
-  tar -zxf robomongo.tar.gz && cd robomongo
-  ROBODIR=$HOME/App/
-  echo $ROBODIR
-  cd /usr/local/bin/
-  sudo ln -s $ROBODIR/bin/robomongo .
-  echo "------------------finished-----------------"
+  source $HOME/.profile
+  source $HOME/.bashrc
+  echo "----------finished--------------"
   echo ""
 }
 
 # proxychains-ng
 config_proxychains4() {
-  echo "----------------proxychains4---------------"
+  echo "---------proxychains4-----------"
+  if test $(which proxychains4); then
+    echo "proxychains4 already installed! pass!"
+    echo "------------finished-------------"
+    echo ""
+    return 0
+  fi
+  if [ -d /home/halsn/tmp ]; then
+    rm -rf ~/tmp
+  fi
   git clone https://github.com/rofl0r/proxychains-ng ~/tmp/proxychains4
   cd /home/halsn/tmp/proxychains4
   sudo make install
+  cd $HOME
+  cd ubuntu-config
   sudo cp -a ./config/proxychains.conf /etc/
-  echo "------------------finished-----------------"
+  echo "---------finished--------------"
   echo ""
 }
 
-first_install
+clean_up() {
+  cd $HOME
+  rm -rf ~/tmp
+}
+
+bootstrap
 config_ssh
 config_git
 config_ubuntu
 config_docker
 config_docker_compose
-# config_mongo
 config_node
-config_yarn
 config_nvim
 config_fzf
-# config_robomongo
 config_proxychains4
+clean_up
