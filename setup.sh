@@ -3,6 +3,8 @@
 # Ask for the administrator password upfront.
 sudo -v
 
+set -e
+
 # Keep-alive: update existing `sudo` time stamp until the script has finished.
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
@@ -63,6 +65,8 @@ config_ubuntu() {
   cp -a ./dotfiles/. $HOME
   cp -a ./App $HOME
   sudo cp -a ./config/rc.local /etc/
+  source $HOME/.profile
+  source $HOME/.bashrc
   echo "-----------finished--------------"
   echo ""
 }
@@ -93,6 +97,8 @@ config_docker() {
   sudo usermod -aG docker $USER
   curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://f1361db2.m.daocloud.io
   sudo systemctl restart docker.service
+  source $HOME/.profile
+  source $HOME/.bashrc
   echo "----------finished---------------"
   echo ""
 }
@@ -147,6 +153,8 @@ config_nvim() {
     return 0
   fi
   curl -o- https://raw.githubusercontent.com/halsn/neovim-config/master/install.sh | sh
+  source $HOME/.profile
+  source $HOME/.bashrc
   echo "-----------finished--------------"
   echo ""
 }
@@ -209,3 +217,5 @@ config_nvim
 config_fzf
 config_proxychains4
 clean_up
+
+set +e
