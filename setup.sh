@@ -1,5 +1,13 @@
 #!/usr/bin/env bash
 
+set -e
+
+# Ask for the administrator password upfront.
+sudo -v
+
+# Keep-alive: update existing `sudo` time stamp until the script has finished.
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
 sudo apt update
 
 #必备软件
@@ -22,6 +30,7 @@ config_git() {
   git config --global user.email "xuhalsn@gmail.com"
   git config --global user.name "halsn"
   echo "------------finished-------------"
+  echo ""
 }
 
 config_ubuntu() {
@@ -32,6 +41,7 @@ config_ubuntu() {
   cp -a ./App $HOME
   sudo cp -a ./config/rc.local /etc/
   echo "-------------------finished---------------------"
+  echo ""
 }
 
 #Docker
@@ -55,6 +65,7 @@ config_docker() {
   curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://26cc5846.m.daocloud.io
   sudo systemctl restart docker.service
   echo "------------finished---------------"
+  echo ""
 }
 
 # Docker Compose
@@ -66,6 +77,7 @@ config_docker_compose() {
   curl -L https://raw.githubusercontent.com/docker/compose/master/contrib/completion/bash/docker-compose -o ~/docker-compose
   sudo mv ~/docker-compose /etc/bash_completion.d/docker-compose
   echo "------------finished---------------"
+  echo ""
 }
 
 #MongoDB
@@ -78,6 +90,7 @@ config_mongo() {
   sudo service mongod start
   echo "sudo service mongod start" | sudo tee -a /etc/rc.local
   echo "--------------finished-----------------"
+  echo ""
 }
 
 # Node
@@ -90,6 +103,7 @@ config_node() {
   nvm install stable
   npm i -g eslint eslint_d eslint-plugin-import eslint-plugin-node eslint-plugin-promise eslint-plugin-standard eslint-plugin-jest eslint-plugin-react
   echo "---------------finished----------------"
+  echo ""
 }
 
 config_yarn() {
@@ -100,6 +114,7 @@ config_yarn() {
   sudo apt-get install --no-install-recommends yarn
   yarn global add http-server nodemon js-beautify htmlhint jsonlint csslint
   echo "---------------finished----------------"
+  echo ""
 }
 
 #NVim
@@ -107,6 +122,7 @@ config_nvim() {
   echo "-----------------nvim-------------------"
   curl -o- https://raw.githubusercontent.com/halsn/neovim-config/master/install.sh | sh
   echo "---------------finished-----------------"
+  echo ""
 }
 
 #fzf
@@ -115,6 +131,7 @@ config_fzf() {
   git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
   ~/.fzf/install
   echo "------------------finished----------------"
+  echo ""
 }
 
 # Robomongo
@@ -127,6 +144,7 @@ config_robomongo() {
   cd /usr/local/bin/
   sudo ln -s $ROBODIR/bin/robomongo .
   echo "------------------finished-----------------"
+  echo ""
 }
 
 # proxychains-ng
@@ -137,6 +155,7 @@ config_proxychains4() {
   sudo make install
   sudo cp -a ./config/proxychains.conf /etc/
   echo "------------------finished-----------------"
+  echo ""
 }
 
 first_install
