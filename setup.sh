@@ -13,7 +13,7 @@ sudo apt update
 #必备软件
 bootstrap() {
   echo "-----------bootstrap-------------"
-  sudo apt install -y ibus-rime ppa-purge tree time curl wget gawk wordnet entr inotify-tools silversearcher-ag htop ncdu exuberant-ctags unity-tweak-tool nyancat vim
+  sudo apt install -y ibus-rime ppa-purge tree time curl wget gawk wordnet entr inotify-tools silversearcher-ag htop ncdu exuberant-ctags unity-tweak-tool nyancat vim proxychains4
   echo "------------finished-------------"
   echo ""
 }
@@ -179,7 +179,7 @@ config_fzf() {
   echo ""
 }
 
-# proxychains-ng
+# proxychains4
 config_proxychains4() {
   echo "---------proxychains4-----------"
   if test $(which proxychains4); then
@@ -188,14 +188,7 @@ config_proxychains4() {
     echo ""
     return 0
   fi
-  if [ -d /home/halsn/tmp ]; then
-    rm -rf ~/tmp
-  fi
-  git clone https://github.com/rofl0r/proxychains-ng ~/tmp/proxychains4
-  cd /home/halsn/tmp/proxychains4
-  sudo make install
-  cd $HOME
-  cd ubuntu-config
+  cd $HOME/ubuntu-config
   sudo cp -a ./config/proxychains.conf /etc/
   echo "---------finished--------------"
   echo ""
