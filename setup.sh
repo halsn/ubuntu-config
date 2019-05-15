@@ -13,7 +13,7 @@ sudo apt update
 #必备软件
 bootstrap() {
   echo "-----------bootstrap-------------"
-  sudo apt install -y ibus-rime ppa-purge tree time curl wget gawk wordnet entr inotify-tools silversearcher-ag htop ncdu exuberant-ctags unity-tweak-tool nyancat vim proxychains4
+  sudo apt install -y ibus-rime ppa-purge tree time curl wget gawk wordnet entr inotify-tools silversearcher-ag htop ncdu exuberant-ctags unity-tweak-tool nyancat vim
   echo "------------finished-------------"
   echo ""
 }
@@ -188,6 +188,7 @@ config_proxychains4() {
     echo ""
     return 0
   fi
+  sudo apt install -y proxychains4
   cd $HOME/ubuntu-config
   sudo cp -a ./config/proxychains.conf /etc/
   echo "---------finished--------------"
@@ -196,7 +197,7 @@ config_proxychains4() {
 
 config_ssclient() {
   echo "----------ssclient-------------"
-  if [ "$(docker ps -a | grep ssclient)" ]; then
+  if [ "$(sudo docker ps -a | grep ssclient)" ]; then
     echo "ssclient already installed! pass!"
     echo "------------finished-------------"
     echo ""
