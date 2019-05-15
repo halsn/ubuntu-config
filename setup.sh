@@ -194,6 +194,19 @@ config_proxychains4() {
   echo ""
 }
 
+config_ssclient() {
+  echo "----------ssclient-------------"
+  if [ "$(docker ps -a | grep ssclient)" ]; then
+    echo "ssclient already installed! pass!"
+    echo "------------finished-------------"
+    echo ""
+    return 0
+  fi
+  sudo docker run -dt --name ssclient --restart=always -p 1080:1080 mritd/shadowsocks -m "ss-local" -s "-s $SSHOST -p $SSPORT -b 0.0.0.0 -l 1080 -m chacha20-ietf-poly1305 -k $SSPASS" -x -e "kcpclient" -k "-r $SSHOST:$SSPORT -l :$SSPORT -mode fast2"
+  echo "---------finished--------------"
+  echo ""
+}
+
 clean_up() {
   cd $HOME
   rm -rf ~/tmp
@@ -203,12 +216,13 @@ bootstrap
 config_ssh
 config_git
 config_ubuntu
-config_docker
+# config_docker
 config_docker_compose
 config_node
 config_nvim
 config_fzf
 config_proxychains4
+config_ssclient
 clean_up
 
 set +e
