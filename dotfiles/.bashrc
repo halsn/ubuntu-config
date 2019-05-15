@@ -218,3 +218,5 @@ export GOPATH="$HOME/.go"
 
 # added by Anaconda3 installer
 export PATH="/home/halsn/anaconda3/bin:$PATH"
+
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
