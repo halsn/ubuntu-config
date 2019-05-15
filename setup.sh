@@ -152,7 +152,7 @@ config_nvim() {
     echo ""
     return 0
   fi
-  proxychains4 curl -o- https://raw.githubusercontent.com/halsn/neovim-config/master/install.sh | sh
+  curl -o- https://raw.githubusercontent.com/halsn/neovim-config/master/install.sh | sh
   source $HOME/.profile
   source $HOME/.bashrc
   echo "-----------finished--------------"
