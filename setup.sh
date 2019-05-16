@@ -138,7 +138,7 @@ config_node() {
   source $HOME/.profile
   source $HOME/.bashrc
   nvm install stable
-  npm --registry=https://registry.npm.taobao.org --verbose i -g eslint eslint_d eslint-plugin-import eslint-plugin-node eslint-plugin-promise eslint-plugin-standard eslint-plugin-jest eslint-plugin-react yarn babel-cli webpack webpack-cli webpack-dev-server
+  npm --registry=https://registry.npm.taobao.org --verbose i -g eslint eslint_d babel-eslint eslint-plugin-import eslint-plugin-node eslint-plugin-promise eslint-plugin-standard eslint-plugin-jest eslint-plugin-react yarn babel-cli webpack webpack-cli webpack-dev-server
   echo "-----------finished--------------"
   echo ""
 }
