@@ -155,6 +155,10 @@ clone_site() {
   wget -P $1 -mpck -e robots=off --wait 1 -E $2
 }
 
+agf() {
+  ag $1 | fzf
+}
+
 export NVM_DIR="$HOME/.nvm"
 
 # 添加自定义文件夹至PATH
