@@ -156,7 +156,7 @@ clone_site() {
 }
 
 agf() {
-  ag $1 | fzf
+  ag "$1" | fzf
 }
 
 export NVM_DIR="$HOME/.nvm"
