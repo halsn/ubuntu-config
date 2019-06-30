@@ -9,4 +9,3 @@ $ SSHOST=localhost SSPORT=1024 SSPASS=foo ./setup.sh
 ```
 $ bash -c "$(curl -fsSl https://raw.githubusercontent.com/halsn/ubuntu-config/master/setup.sh)"
 ```
-
