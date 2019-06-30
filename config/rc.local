@@ -14,7 +14,8 @@
 su -c "$HOME/ubuntu-config/App/gitwatch -r origin -b master $HOME/ubuntu-config" -l halsn &
 su -c "$HOME/ubuntu-config/App/gitwatch -r origin -b master $HOME/.config/nvim" -l halsn &
 su -c "ls /etc/rc.local | entr -p cp /_ $HOME/ubuntu-config/config/" -l halsn &
-su -c "ls $HOME/.bashrc | entr -p cp /_ $HOME/ubuntu-config/dotfiles/" -l halsn &
+su -c "ls $HOME/.base_bashrc | entr -p cp /_ $HOME/ubuntu-config/dotfiles/" -l halsn &
+su -c "ls $HOME/.bash_aliases | entr -p cp /_ $HOME/ubuntu-config/dotfiles/" -l halsn &
 su -c "ls $HOME/.eslintrc | entr -p cp /_ $HOME/ubuntu-config/dotfiles/" -l halsn &
 
 exit 0
