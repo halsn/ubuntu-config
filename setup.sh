@@ -17,8 +17,6 @@ else
   wsl=0
 fi
 
-exit
-
 sudo apt update
 
 #必备软件
