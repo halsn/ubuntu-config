@@ -74,7 +74,6 @@ config_ubuntu() {
   cd $HOME
   git clone git@github.com:halsn/ubuntu-config.git && cd ubuntu-config
   cp -a ./dotfiles/. $HOME
-  cp -a ./App $HOME
   sudo cp -a ./config/rc.local /etc/
   source $HOME/.profile
   echo 'source ~/.base_bashrc' > $HOME/.bashrc
