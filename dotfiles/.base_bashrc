@@ -154,8 +154,6 @@ function parse_git_dirty {
 	fi
 }
 
-cd ~
-
 export PS1="\u@\h[\A]\`parse_git_branch\`:\w\\$ "
 export PATH=$PATH:$HOME/ubuntu-config/App
 export PATH="$HOME/.local/bin:$PATH"
