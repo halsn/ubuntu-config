@@ -8,6 +8,17 @@ set -e
 # Keep-alive: update existing `sudo` time stamp until the script has finished.
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
+# check if is on windows sub linux system
+wsl=0;
+
+if grep -q Microsoft /proc/version; then
+  wsl=1
+else
+  wsl=0
+fi
+
+exit
+
 sudo apt update
 
 #必备软件
@@ -20,7 +31,7 @@ bootstrap() {
 
 config_ssh() {
   echo "---------------ssh---------------"
-  if [ -d /home/halsn/.ssh ]; then
+  if [ -d $HOME/.ssh ]; then
     echo "ssh dir already exist! pass!"
     echo "------------finished-------------"
     echo ""
@@ -36,7 +47,7 @@ config_ssh() {
 
 config_git() {
   echo "---------------git---------------"
-  if test $(which git); then
+  if test $(which git) -a $wsl -eq 0; then
     echo "git already installed! pass!"
     echo "------------finished-------------"
     echo ""
@@ -54,7 +65,7 @@ config_git() {
 
 config_ubuntu() {
   echo "-------clone ubuntu-config-------"
-  if [ -d /home/halsn/ubuntu-config ]; then
+  if [ -d $HOME/ubuntu-config ]; then
     echo "ubuntu-config dir already exist! pass!"
     echo "------------finished-------------"
     echo ""
@@ -130,7 +141,7 @@ config_node() {
     echo ""
     return 0
   fi
-  if [ ! -d /home/halsn/.nvm ]; then
+  if [ ! -d $HOME/.nvm ]; then
     mkdir ~/.nvm
   fi
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
@@ -168,7 +179,7 @@ config_fzf() {
     echo ""
     return 0
   fi
-  if [ -d /home/halsn/.fzf ]; then
+  if [ -d $HOME/.fzf ]; then
     rm -rf ~/.fzf
   fi
   git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
@@ -217,13 +228,17 @@ bootstrap
 config_ssh
 config_git
 config_ubuntu
-config_docker
-config_docker_compose
-config_ssclient
-config_proxychains4
 config_node
 config_nvim
 config_fzf
+
+if [ $wsl -eq 0 ]; then
+  config_docker
+  config_docker_compose
+  config_ssclient
+  config_proxychains4
+fi
+
 clean_up
 
 set +e
