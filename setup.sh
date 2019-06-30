@@ -77,8 +77,9 @@ config_ubuntu() {
   cp -a ./App $HOME
   sudo cp -a ./config/rc.local /etc/
   source $HOME/.profile
+  echo 'source ~/.base_bashrc' > $HOME/.bashrc
   source $HOME/.bashrc
-  echo "-----------finished--------------"
+  echo "-------------finished-------------"
   echo ""
 }
 
