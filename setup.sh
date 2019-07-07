@@ -168,6 +168,23 @@ config_nvim() {
   echo ""
 }
 
+# Coc server
+config_coc() {
+  echo "-------------coc--------------"
+  if [ -d $HOME/.config/coc/extension ]; then
+    echo "coc dir already exist! pass!"
+    echo "------------finished-------------"
+    echo ""
+    return 0
+  fi
+  extensions="coc-tsserver coc-tslint coc-eslint coc-json coc-html coc-css coc-ultisnips coc-dictionary coc-lists coc-word"
+  mkdir -P $HOME/.config/coc/extensions
+  cd $HOME/.config/coc/extensions
+  yarn add --ignore-engines $extensions
+  echo "-----------finished--------------"
+  echo ""
+}
+
 # fzf
 config_fzf() {
   echo "-------------fzf----------------"
