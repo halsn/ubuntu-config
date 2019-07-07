@@ -245,6 +245,7 @@ config_git
 config_ubuntu
 config_node
 config_nvim
+config_coc
 config_fzf
 
 if [ $wsl -eq 0 ]; then
