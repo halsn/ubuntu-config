@@ -71,8 +71,14 @@ config_ubuntu() {
   fi
   cd $HOME
   git clone git@github.com:halsn/ubuntu-config.git && cd ubuntu-config
-  cp -a ./dotfiles/. $HOME
-  sudo cp -a ./config/rc.local /etc/
+
+  cd $HOME/ubuntu-config/dotfiles
+  for filename in `ls -A` ; do
+    ln -r -s -f "$filename" ~
+  done
+  
+  cd $HOME/ubuntu-config/config
+  sudo cp -a ./rc.local /etc/
   source $HOME/.profile
   echo 'source ~/.base_bashrc' > $HOME/.bashrc
   source $HOME/.bashrc
