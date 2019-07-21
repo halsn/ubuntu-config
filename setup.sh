@@ -183,7 +183,7 @@ config_coc() {
     echo ""
     return 0
   fi
-  extensions="coc-tsserver coc-tslint coc-eslint coc-json coc-html coc-css coc-ultisnips coc-dictionary coc-lists coc-word"
+  extensions="coc-tsserver coc-tslint coc-eslint coc-json coc-html coc-css coc-ultisnips coc-dictionary coc-lists coc-word coc-python"
   mkdir -p $HOME/.config/coc/extensions
   cd $HOME/.config/coc/extensions
   yarn add --ignore-engines $extensions
