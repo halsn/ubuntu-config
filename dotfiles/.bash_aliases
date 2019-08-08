@@ -47,6 +47,12 @@ git_commit() {
   git add . -A && git commit -m "${1}" && git push
 }
 
+# commit之前输入必要信息
+git_job_msg() {
+  read msg
+  git add . -A && git commit -m "$msg" && git push
+}
+
 # git clone from my user account
 github_clone() {
   git clone git@github.com:halsn/$1
