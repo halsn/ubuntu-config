@@ -53,6 +53,10 @@ git_job_msg() {
   git add . -A && git commit -m "$msg" && git push
 }
 
+git_rm_branch() {
+  git branch -d ${1} && git push origin --delete ${1}
+}
+
 # git clone from my user account
 github_clone() {
   git clone git@github.com:halsn/$1
@@ -70,6 +74,7 @@ agf() {
 alias docker_pid="docker inspect --format '{{.State.Pid}}'"
 alias docker_ip="docker inspect --format '{{ .NetworkSettings.IPAddress }}'"
 alias docker_rmi_none="docker images | grep none | awk '{print $3 }' | xargs docker rmi"
+alias docker_rm_volume="docker volume ls -qf dangling=true | xargs -r docker volume rm"
 
 docker_enter() {
   #if [ -e $(dirname "$0")/nsenter ]; then
@@ -111,4 +116,12 @@ docker_enter() {
       sudo $NSENTER --target $PID --mount --uts --ipc --net --pid env -i $@
     fi
   fi
+}
+
+docker_rm_regex() {
+  docker ps -a --filter name=$1 -aq | xargs docker stop | xargs docker rm
+}
+
+docker_rmi_regex() {
+  docker images | grep $1 |  xargs docker rmi
 }
