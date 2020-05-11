@@ -23,7 +23,7 @@ alias cmd="cmd.exe"
 alias pmd="powershell.exe"
 
 trs() {
-  trans -t zh+en $1 | less
+  trans -t zh+en "${1}" | less
 }
 
 root () {
