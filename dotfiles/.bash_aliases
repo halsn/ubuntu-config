@@ -19,9 +19,12 @@ alias ll='ls -alF --color=none'
 alias la='ls -A --color=none'
 alias l='ls -CF | more'
 # google翻译
-alias trs="trans -t zh+en "
 alias cmd="cmd.exe"
 alias pmd="powershell.exe"
+
+trs() {
+  trans -t zh+en $1 | less
+}
 
 root () {
   cd `git rev-parse --show-toplevel`
