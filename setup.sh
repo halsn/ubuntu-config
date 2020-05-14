@@ -22,7 +22,7 @@ sudo apt update
 #必备软件
 bootstrap() {
   echo "-----------bootstrap-------------"
-  sudo apt install -y ibus-rime ppa-purge tree time curl wget gawk wordnet entr inotify-tools silversearcher-ag htop ncdu exuberant-ctags unity-tweak-tool nyancat vim
+  sudo apt install -y ibus-rime ppa-purge tree time curl wget gawk wordnet entr inotify-tools silversearcher-ag htop ncdu exuberant-ctags unity-tweak-tool nyancat vim w3m ripgrep tig icdiff lshw
   echo "------------finished-------------"
   echo ""
 }
