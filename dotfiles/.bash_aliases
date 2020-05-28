@@ -73,6 +73,10 @@ agf() {
   ag "$1" | fzf
 }
 
+rgf() {
+  rg "$1" | fzf
+}
+
 # docker相关
 alias docker_pid="docker inspect --format '{{.State.Pid}}'"
 alias docker_ip="docker inspect --format '{{ .NetworkSettings.IPAddress }}'"
