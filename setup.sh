@@ -22,7 +22,7 @@ sudo apt update
 #必备软件
 bootstrap() {
   echo "-----------bootstrap-------------"
-  sudo apt install -y ppa-purge tree time curl wget gawk wordnet entr inotify-tools silversearcher-ag htop ncdu exuberant-ctags nyancat vim w3m ripgrep tig icdiff lshw gcc g++ sqlite3 libsqlite3-dev
+  sudo apt install -y ppa-purge tree time curl wget gawk wordnet entr inotify-tools silversearcher-ag htop ncdu exuberant-ctags nyancat vim w3m ripgrep tig icdiff lshw gcc g++ sqlite3 libsqlite3-dev make
   echo "------------finished-------------"
   echo ""
 }
