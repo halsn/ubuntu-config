@@ -101,8 +101,6 @@ fi
 # 输入路径自动cd
 shopt -s autocd
 
-TERM=xterm-old
-
 if [ -f ~/.bash_aliases ]; then
   . ~/.bash_aliases
 fi
